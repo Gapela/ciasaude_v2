@@ -1,0 +1,19 @@
+{
+  "database_connection": {
+    "prod": {
+      "hostname": "localhost",
+      "username": "postgres",
+      "password": "17571946735",
+      "database": "ciasaude",
+      "port": "5432"
+    },
+
+    "hml": {
+      "hostname": "localhost",
+      "username": "postgres",
+      "password": "17571946735",
+      "database": "ciasaude",
+      "port": "5432"
+    }
+  }
+}
