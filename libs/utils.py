@@ -1,6 +1,5 @@
-import json
 
-with open('config/config.json') as f:
-    config_data = json.load(f)
 
-# Agora você pode acessar os dados do arquivo config.json usando a variável config_data
+#crie uma função que pegue um dataframe e transforme em json
+def df_to_json(df):
+    return df.to_json(orient='records')

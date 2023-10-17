@@ -1,6 +1,7 @@
 #Conexão com o sqlalchemy
 from sqlalchemy import create_engine
 from psycopg2 import connect
+from pandas import read_sql_query
 
 import json
 with open('config/config.json') as json_file:
@@ -13,18 +14,15 @@ host = config["database_connection"]["hml"]["hostname"]
 port = config["database_connection"]["hml"]["port"]
 database = config["database_connection"]["hml"]["database"]
 
-#crie uma função para se conectar ao banco de dados em python
-def connect_db_sqlalchemy():
-    #crie uma engine para se conectar ao banco de dados usando as variaveis anteriores
-    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{database}')
 
-    #crie a conexão usando a engine
+def connect_db_sqlalchemy():
+    
+    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{database}')
     connection = engine.connect()
-    query = 'create table teste (id serial)'
-    connection.execute(query)
+    
     return connection
 
-#crie uma função para se conectar ao banco de dados em python usando o psycopg2
+
 def connect_db_psycopg2():
     #crie uma engine para se conectar ao banco de dados usando as variaveis anteriores por favor
     con = connect(dbname=database, 
@@ -34,15 +32,18 @@ def connect_db_psycopg2():
                   port=port)
     return con
 
-#crie uma função para executar uma query usando o psycopg2
+
 def execute_query_psycopg2(query):
-
     con = connect_db_psycopg2()
-
     cur = con.cursor()
-
     cur.execute(query)
-
     con.commit()
-
     con.close()
+
+
+def execute_query_df(query):
+    connection = connect_db_psycopg2()
+    df = read_sql_query(query, connection)
+    connection.close()
+    return df
+    
