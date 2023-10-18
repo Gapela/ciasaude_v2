@@ -34,12 +34,16 @@ def connect_db_psycopg2():
 
 
 def execute_query_psycopg2(query):
-    con = connect_db_psycopg2()
-    cur = con.cursor()
-    cur.execute(query)
-    con.commit()
-    con.close()
-
+    try:
+        con = connect_db_psycopg2()
+        cur = con.cursor()
+        cur.execute(query)
+        
+        con.commit()
+        con.close()
+        return {"status": "ok", "data": "query executada com sucesso"}
+    except Exception as e:
+        return {"status": "error", "data": str(e)}
 
 def execute_query_df(query):
     connection = connect_db_psycopg2()

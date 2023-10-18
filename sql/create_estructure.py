@@ -22,7 +22,8 @@ queries = [
         pagamento TEXT,
         empresa TEXT,
         numero_carteirinha TEXT,
-        plano TEXT
+        plano TEXT,
+        data_exclusao timestamp without time zone
     );
     """,
     """ DROP TABLE IF EXISTS atendimento;
@@ -36,7 +37,8 @@ queries = [
         data_inicio DATE,
         data_fim DATE,
         id_paciente INT,
-        id_profissional INT
+        id_profissional INT,
+        data_exclusao timestamp without time zone
     );
     """,
     """DROP TABLE IF EXISTS profissional;
@@ -56,7 +58,8 @@ queries = [
         pix TEXT,
         banco TEXT,
         agencia TEXT,
-        conta TEXT
+        conta TEXT,
+        data_exclusao timestamp without time zone
     );
     """,
     """DROP TABLE IF EXISTS usuario;
@@ -67,7 +70,8 @@ queries = [
         email TEXT,
         exclusao TEXT,
         redefinir TEXT,
-        ultima_modificacao TEXT
+        ultima_modificacao TEXT,
+        data_exclusao timestamp without time zone
     );
     """
 ]
