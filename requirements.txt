@@ -1,3 +1,4 @@
 flask
 sqlalchemy
-postgresql
+psycopg2
+pandas

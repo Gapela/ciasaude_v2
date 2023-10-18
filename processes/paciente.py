@@ -1,5 +1,5 @@
-from flask import Flask, redirect, render_template
-from libs.postgresTool import execute_query_df
+from flask import Flask, redirect, render_template, request
+from libs.postgresTool import execute_query_df, connect_db_psycopg2
 from libs.utils import *
 import json
 
@@ -11,6 +11,13 @@ def rotas_paciente(app):
             return {'status':'ok', 'data':get_df_to_json()}
         except Exception as e:
             return {'status':'error', 'data':str(e)} 
+
+    @app.route('/paciente-cadastro', methods=['POST'])
+    def paciente_cadastro():
+        
+        data = request.get_json()
+        return insert_paciente(data=data)
+
     return app
 
 def get_df_to_json():
@@ -40,3 +47,13 @@ def get_df_to_json():
     js = json.loads(js)
     return js
 
+
+
+def insert_paciente(data):
+    
+    
+    df = json_to_df(js=data)
+   
+    
+    insert_df_to_db(df=df, table_name='paciente', conn=connect_db_psycopg2())
+    return {'status':'ok', 'data':'paciente cadastrado com sucesso'}
