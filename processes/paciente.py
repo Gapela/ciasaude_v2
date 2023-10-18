@@ -7,9 +7,10 @@ def rotas_paciente(app):
 
     @app.route('/paciente-consulta', methods=['POST'])
     def paciente_consulta():
-        
-        return {'status':'ok', 'data':get_df_to_json()}
-    
+        try:
+            return {'status':'ok', 'data':get_df_to_json()}
+        except Exception as e:
+            return {'status':'error', 'data':str(e)} 
     return app
 
 def get_df_to_json():
