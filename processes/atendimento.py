@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template,request
 from libs.postgresTool import execute_query_df
 from libs.utils import *
 import json
