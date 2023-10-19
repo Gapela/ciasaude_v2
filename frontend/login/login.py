@@ -6,9 +6,7 @@ login_bp = Blueprint("login", __name__, template_folder="templates",
 
 @login_bp.route('/login')
 def login():
-    return 'Página do login'
+    return render_template('login.html')
 
 
-@login_bp.route('/login/<int:login_id>')
-def login_detail(login_id):
-    return f'Página do login {login_id}'
+
