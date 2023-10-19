@@ -1,0 +1,124 @@
+/* @media (max-width: 1920px) {
+    .col-md-4, .col-md-5, .col-md-3 {
+        width: 33.33%;
+        float: left;
+    }
+}*/
+  
+/* @media (max-width: 1366px) {
+    .col-md-4, .col-md-5, .col-md-3 {
+      flex-basis: 70%;
+      max-width: 50%;
+    }
+} */
+
+/* .navbar {
+    display: flex;
+    justify-content: space-between;
+  } */
+
+.divInfo{
+    align-items: right;
+    text-align: right;
+    padding-left: 80px;
+}
+
+.logo{
+    padding-left: 30px;
+}
+
+.titulo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 10px;
+    color: aliceblue;
+}
+.links{
+    margin: auto;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    list-style: none;
+    
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: antiquewhite;
+}
+
+
+
+.paginas{
+    color: aliceblue;
+}
+
+.sair{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-right: 40px;
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+.sair:hover{
+    color: rgb(0, 0, 0);
+}
+
+
+.link{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    color: rgb(231, 229, 226);
+}
+ 
+.link:hover{
+    color: rgb(0, 0, 0);
+}
+
+
+
+
+.navegacao{
+    background-image: linear-gradient(to right, #fa8800, #d349c3);
+    
+}
+
+
+.ferramentas{
+    margin: auto;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    list-style: none;
+    
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: antiquewhite;
+}
+
+.semempresa{
+    color: red;
+    display: none;
+}
+
+
+.botaoselecionar{
+
+    background-image: linear-gradient(to right, #fa8800, #d349c3);
+    border-radius: 15px;
+}
+
+.sairimagem{
+    color:aliceblue;
+    width: 20px;
+    
+}
+.userimagem{
+    color:aliceblue;
+    width: 20px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+.empresaimagem{
+    color:aliceblue;
+    width: 20px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
