@@ -1,1 +1,35 @@
-{% extends "navbar.html" %} {% block content %} {% endblock %}
+{% extends "navbar.html" %} {% block content %}
+<link rel="stylesheet" href="/page/static/css/home.css" />
+<div class="homepage">
+  <div class="centered-menu">
+    <div class="card">
+      <div class="card-position">
+        <div class="card-title">Pacientes</div>
+        <div class="card-body">
+          Gerencie os pacientes que usufruem dos serviços da clínica.
+        </div>
+        <div class="card-button"><button class="button">Consultar</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-position">
+        <div class="card-title">Tratamentos</div>
+        <div class="card-body">
+          Módulo de cadastro de tratamentos realizados.
+        </div>
+        <div class="card-button"><button class="button">Consultar</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-position">
+        <div class="card-title">Profissionais</div>
+        <div class="card-body">Módulo de gerenciamento de profissionais.</div>
+        <div class="card-button"><button class="button">Consultar</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
