@@ -6,7 +6,7 @@ paciente_bp = Blueprint("paciente", __name__, template_folder="templates",
 
 @paciente_bp.route('/paciente')
 def paciente():
-    return 'Página do paciente'
+    return render_template('paciente.html')
 
 
 @paciente_bp.route('/paciente/<int:paciente_id>')
