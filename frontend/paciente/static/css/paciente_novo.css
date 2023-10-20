@@ -1,4 +1,4 @@
-.container-paciente {
+.container-paciente-novo {
   margin: 10px 300px;
 
   padding: 20px;
@@ -15,13 +15,13 @@
   color: #000;
 }
 
-.table-content {
+.form-content {
   margin-top: 10px;
   display: flex;
   justify-content: center;
 }
 
-.table-actions {
+.actions {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;

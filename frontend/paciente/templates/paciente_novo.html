@@ -2,12 +2,26 @@
 
 <link rel="stylesheet" href="paciente/static/css/paciente_novo.css" />
 
-<div class="container">
+<div class="container-paciente-novo">
   <div class="title">Módulo de Pacientes - Cadastro</div>
-  <div class="table-content"></div>
+  <div class="form-content">
+    <div class="form-input">
+      <label for="usuario">Nome</label>
+      <input type="nome" placeholder="Nome" autofocus="true" id="nome" />
+    </div>
+    <div class="form-input">
+      <label for="usuario">Email</label>
+      <input
+        type="user"
+        placeholder="Digite seu usuário"
+        autofocus="true"
+        id="user"
+      />
+    </div>
+  </div>
 
   <div class="actions">
-    <a class="button-table-action">Novo</a
+    <a class="button-table-action">Salvar</a
     ><a class="button-table-action">Voltar</a>
   </div>
 </div>
