@@ -1,1 +1,41 @@
-{% extends "navbar.html" %} {% block content %} {% endblock %}
+{% extends "navbar.html" %} {% block content %}
+
+<link rel="stylesheet" href="paciente/static/css/paciente.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css"
+/>
+
+<div class="container-paciente">
+  <div class="title">Módulo de Pacientes</div>
+  <div class="table-content">
+    <table id="paciente" class="row-border" style="width: 100%">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Data de Nascimento</th>
+          <th>Médico Solicitante</th>
+          <th>Ocupação</th>
+          <th>CID</th>
+          <th>Observação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="table-actions">
+    <a class="button-table-action" href="/paciente/novo">Novo</a
+    ><a class="button-table-action" href="/home">Voltar</a>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.tailwindcss.min.js"></script>
+<script src="https://cdn.tailwindcss.com/"></script>
+<script src="paciente/static/js/paciente.js"></script>
+{% endblock %}

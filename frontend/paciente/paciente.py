@@ -9,6 +9,11 @@ def paciente():
     return render_template('paciente.html')
 
 
+@paciente_bp.route('/paciente/novo')
+def paciente_novo():
+    return render_template('paciente_novo.html')
+
+
 @paciente_bp.route('/paciente/<int:paciente_id>')
 def paciente_detail(paciente_id):
     return f'Página do paciente {paciente_id}'
