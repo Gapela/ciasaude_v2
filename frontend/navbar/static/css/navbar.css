@@ -1,124 +1,54 @@
-/* @media (max-width: 1920px) {
-    .col-md-4, .col-md-5, .col-md-3 {
-        width: 33.33%;
-        float: left;
-    }
-}*/
-  
-/* @media (max-width: 1366px) {
-    .col-md-4, .col-md-5, .col-md-3 {
-      flex-basis: 70%;
-      max-width: 50%;
-    }
-} */
-
-/* .navbar {
-    display: flex;
-    justify-content: space-between;
-  } */
-
-.divInfo{
-    align-items: right;
-    text-align: right;
-    padding-left: 80px;
+.navbar {
+  background-color: #f1f1f1;
+  max-width: 100%;
+  margin: 0 auto;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  color: antiquewhite;
 }
 
-.logo{
-    padding-left: 30px;
+.logo {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-start;
+  margin-left: 20px;
 }
 
-.titulo{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-left: 10px;
-    color: aliceblue;
-}
-.links{
-    margin: auto;
-    text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    list-style: none;
-    
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    color: antiquewhite;
+.logo-image {
+  width: 150px;
+  display: block;
 }
 
-
-
-.paginas{
-    color: aliceblue;
+.links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex: 2;
 }
 
-.sair{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding-right: 40px;
-    text-decoration: none;
-    color: antiquewhite;
+.link a {
+  text-decoration: none;
+  color: rgb(126, 125, 125);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.sair:hover{
-    color: rgb(0, 0, 0);
+.link a:hover {
+  color: rgb(0, 0, 0);
 }
 
-
-.link{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: none;
-    color: rgb(231, 229, 226);
-}
- 
-.link:hover{
-    color: rgb(0, 0, 0);
+.container-body {
+  margin: 0;
 }
 
-
-
-
-.navegacao{
-    background-image: linear-gradient(to right, #fa8800, #d349c3);
-    
+.itens {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  width: 100%;
 }
 
-
-.ferramentas{
-    margin: auto;
-    text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    list-style: none;
-    
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: antiquewhite;
-}
-
-.semempresa{
-    color: red;
-    display: none;
-}
-
-
-.botaoselecionar{
-
-    background-image: linear-gradient(to right, #fa8800, #d349c3);
-    border-radius: 15px;
-}
-
-.sairimagem{
-    color:aliceblue;
-    width: 20px;
-    
-}
-.userimagem{
-    color:aliceblue;
-    width: 20px;
-    margin-right: 5px;
-    margin-bottom: 3px;
-}
-.empresaimagem{
-    color:aliceblue;
-    width: 20px;
-    margin-right: 5px;
-    margin-bottom: 3px;
+.logout {
+  text-align: right;
 }
