@@ -5,46 +5,202 @@
 <div class="container-paciente-novo">
   <div class="title">Módulo de Pacientes - Cadastro</div>
   <div class="form-content">
-    <div class="form-input">
-      <label for="usuario">Nome</label>
-      <input type="text" placeholder="Nome" autofocus="true" id="nome" />
+    <div class="nome-endereco">
+      <div class="form-input">
+        <label for="usuario">Nome</label>
+        <input
+          type="text"
+          placeholder="Insira o nome completo"
+          autofocus="true"
+          id="nome"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Endereço</label>
+        <input
+          type="text"
+          placeholder="Insira seu endereço completo"
+          autofocus="true"
+          id="endereco"
+        />
+      </div>
     </div>
-    <div class="form-input">
-      <label for="usuario">Email</label>
-      <input type="text" placeholder="Email" autofocus="true" id="user" />
+    <div class="four-items">
+      <div class="form-input">
+        <label for="usuario">CEP</label>
+        <input type="text" placeholder="XXXXX-XXX" autofocus="true" id="cep" />
+      </div>
+      <div class="form-input">
+        <label for="usuario">RG</label>
+        <input
+          type="text"
+          placeholder="XX.XXX.XXX-X"
+          autofocus="true"
+          id="rg"
+        />
+      </div>
+      <div class="form-input">
+        <label for="usuario">CPF</label>
+        <input
+          type="text"
+          placeholder="XXX.XXX.XXX-XX"
+          autofocus="true"
+          id="cpf"
+        />
+      </div>
+      <div class="form-input">
+        <label for="usuario">Telefone</label>
+        <input
+          type="text"
+          placeholder="(DDD) XXXXX-XXXX"
+          autofocus="true"
+          id="telefone"
+        />
+      </div>
     </div>
-    <div class="form-input">
-      <label for="usuario">Telefone</label>
-      <input
-        type="text"
-        placeholder="Telefone com DDD"
-        autofocus="true"
-        id="user"
-      />
+    <div class="two-right">
+      <div class="form-input">
+        <label for="usuario">Email</label>
+        <input
+          type="text"
+          placeholder="email@email.com"
+          autofocus="true"
+          id="email"
+        />
+      </div>
+      <div class="form-input">
+        <label for="usuario">Data de Nascimento</label>
+        <input
+          type="text"
+          placeholder="XX/XX/XXXX"
+          autofocus="true"
+          id="data_nascimento"
+        />
+      </div>
     </div>
-    <div class="form-input">
-      <label for="usuario">CEP</label>
-      <input
-        type="text"
-        placeholder="Código de Endereço Postal"
-        autofocus="true"
-        id="user"
-      />
+
+    <div class="two-right">
+      <div class="form-input">
+        <label for="usuario">Responsável</label>
+        <input
+          type="text"
+          placeholder="Insira o nome do Responsável"
+          autofocus="true"
+          id="responsavel"
+        />
+      </div>
+      <div class="form-input">
+        <label for="usuario">CPF do Responsável</label>
+        <input
+          type="text"
+          placeholder="Insira o CPF do Responsável"
+          autofocus="true"
+          id="cpf_responsavel"
+        />
+      </div>
     </div>
-    <div class="form-input">
-      <label for="usuario">Data de Nascimento</label>
-      <input
-        type="text"
-        placeholder="Data de Nascimento"
-        autofocus="true"
-        id="user"
-      />
+
+    <div class="three-items">
+      <div class="form-input">
+        <label for="usuario">Médico Solicitante</label>
+        <input
+          type="text"
+          placeholder="Insira o nome do Médico Solicitante"
+          autofocus="true"
+          id="medico_solicitante"
+        />
+      </div>
+      <div class="form-input">
+        <label for="usuario">CRM</label>
+        <input
+          type="text"
+          placeholder="Insira o CRM do Médico Solicitante"
+          autofocus="true"
+          id="medico_solicitante_crm"
+        />
+      </div>
+      <div class="form-input">
+        <label for="usuario">Ocupação</label>
+        <input
+          type="text"
+          placeholder="Insira a Ocupação do Médico Solicitante"
+          autofocus="true"
+          id="medico_solicitante_ocupacao"
+        />
+      </div>
+    </div>
+    <div class="two-vertical">
+      <div class="form-input">
+        <label for="usuario">CID</label>
+        <textarea
+          type="text-area"
+          placeholder="Insira a CID do Médico Solicitante"
+          autofocus="true"
+          id="cid"
+        ></textarea>
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Observação</label>
+        <textarea
+          type="text-area"
+          placeholder="Insira a CID do Médico Solicitante"
+          autofocus="true"
+          id="observacao"
+        ></textarea>
+      </div>
+    </div>
+    <div class="four-items">
+      <div class="form-input">
+        <label for="usuario">Forma de pagamento</label>
+        <select name="forma_pagamento" id="forma_pagamento" class="select">
+          <!--crie opções plano de saude ou particular-->
+          <option value="plano">Plano de Saúde</option>
+          <option value="particular">Particular</option>
+        </select>
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Empresa</label>
+        <select name="empresa" id="empresa" class="select">
+          <!--crie opções Amil, bradesco, unimed, gamasaude e outros-->
+          <option value="0">Sem plano</option>
+          <option value="amil">Amil</option>
+          <option value="bradesco">Bradesco</option>
+          <option value="unimed">Unimed</option>
+          <option value="gamasaude">Gama Saúde</option>
+          <option value="outros">Outros</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <label for="usuario">Nº Carteirinha</label>
+        <input
+          type="text"
+          placeholder="Insira o nº da carteirinha do paciente"
+          autofocus="true"
+          id="user"
+        />
+      </div>
+      <div class="form-input">
+        <label for="usuario">Plano</label>
+        <input
+          type="text"
+          placeholder="Insira o plano de saúde do paciente"
+          autofocus="true"
+          id="user"
+        />
+      </div>
     </div>
   </div>
 
+  <div class="upload">
+    <input type="file" id="myFile" name="filename" />
+  </div>
+
   <div class="actions">
-    <a class="button-table-action">Salvar</a
-    ><a class="button-table-action">Voltar</a>
+    <a class="button-table-action" onclick="get_content()">Salvar</a
+    ><a class="button-table-action" href="/paciente">Voltar</a>
   </div>
 </div>
 

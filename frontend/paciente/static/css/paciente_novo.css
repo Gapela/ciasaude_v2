@@ -17,10 +17,54 @@
 
 .form-content {
   margin-top: 30px;
-  display: grid;
+  /* display: grid;
   justify-content: center;
   gap: 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr; */
+}
+
+.form-content .nome-endereco {
+  margin-top: 30px;
+  display: grid;
+  gap: 30px;
+}
+
+.form-content .four-items {
+  margin-top: 30px;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.form-content .two-right {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.form-content .one-line {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.form-content .three-items {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.form-content .two-vertical {
+  margin-top: 30px;
+  display: grid;
+  gap: 30px;
+}
+
+.upload {
+  margin-top: 30px;
 }
 
 input[type="text"] {
@@ -35,6 +79,29 @@ input[type="text"] {
   color: #000;
 }
 
+textarea {
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
 .form-input {
   display: flex;
   flex-direction: column;
@@ -54,6 +121,10 @@ input[type="text"] {
   align-items: center;
   justify-content: flex-end;
   gap: 15px;
+}
+
+.button-table-action {
+  text-decoration: none;
 }
 
 .button-table-action {
