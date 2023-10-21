@@ -1,5 +1,5 @@
 .container-paciente-novo {
-  margin: 10px 300px;
+  margin: 20px 300px;
 
   padding: 20px;
   border-radius: 10px;
@@ -16,9 +16,35 @@
 }
 
 .form-content {
-  margin-top: 10px;
-  display: flex;
+  margin-top: 30px;
+  display: grid;
   justify-content: center;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+input[type="text"] {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.form-input label {
+  margin: 0 5px;
+  font-size: 18px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .actions {
