@@ -1,20 +1,29 @@
-from libs.postgresTool import connect_db_psycopg2, execute_query_psycopg2, execute_query_df
-from libs.utils import *
+from libs.postgresTool import execute_query_df
 from flask_jwt_extended import JWTManager
-from flask import request
+from datetime import datetime, timedelta
+from flask import request, jsonify
+from libs.utils import *
+import jwt
 
 def rotas_login(app):
 
-    app.config['JWT_SECRET_KEY'] = 'super-secret'
-    jwt = JWTManager(app)
-
     @app.route('/login', methods=['POST'])
     def login():
-        pass
+        try:
+            usuario = 'pelai'
+            senha = 'pelai123'
+            user = User(usuario, senha)
+            status = user.autentica_usuario()
 
+            if status['status'] == 'ok':
+                usuario_bd = user.pegar_usuario_bd()
+                print(usuario_bd)
+                return jsonify(usuario_bd)
+            
+        except Exception as e:
+            return jsonify({'status': 'erro', 'message': str(e)})
+        
     return app
-
-
 
 class User:
     def __init__(self, usuario, senha):
@@ -38,27 +47,15 @@ class User:
             return {'status': 'nok', 'message': 'Usuário ou senha inválidos!'}
         
     def pegar_usuario_bd(self):
+
         try:
-            status = self.autentica_usuario()
-
-            if status['status'] == 'ok':
-                dados_usuario = execute_query_df(f"SELECT * FROM usuario WHERE usuario = '{self.usuario}'")
-                usuario_id = dados_usuario['id'][0]
-                usuario = dados_usuario['usuario'][0]
-                email = dados_usuario['email'][0]
-                token = 'a criar token'
-
-                response = {'status': 'ok', 'data': {'usuario_id': usuario_id, 'usuario': usuario, 'email': email, 'token': token}}
-
-                return response
-
+            dados_usuario = execute_query_df(f"SELECT * FROM usuario WHERE usuario = '{self.usuario}'")
+            id_usuario = str(dados_usuario.loc[0:0, 'id_usuario'].iloc[0])
+            usuario = dados_usuario.loc[0:0, 'usuario'].iloc[0]
+            email = dados_usuario.loc[0:0, 'email'].iloc[0]
+            token = 'token_test'
+            
+            return {'status': 'ok', 'data': {'id_usuario': id_usuario, 'usuario': usuario, 'email': email, 'token': token}}
+                
         except Exception as e:
-            return {'status': 'erro - pegar_usuario_bd', 'message': str(e)}
-        
-
-usuario = 'pelai'
-senha = '123456789'
-user = User(usuario, senha)
-
-resposne = user.pegar_usuario_bd()
-print(resposne)
+            return {'status': 'erro', 'message': str(e)}
