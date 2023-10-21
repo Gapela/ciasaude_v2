@@ -1,4 +1,5 @@
 import pandas as pd
+import hashlib
 import json
 
 #crie uma função que pegue um dataframe e transforme em json
@@ -38,7 +39,6 @@ def delete_from_database(table, id):
     query = f"""UPDATE public.{table} SET data_exclusao = now() WHERE id_{table} = {id};"""
     return query
 
-
 #função para criar uma query de update para todos os campos do dataframe com base no parametro id
 def df_to_update_query(df, table_name, id):
     query = f"""UPDATE public.{table_name} SET """
@@ -46,4 +46,16 @@ def df_to_update_query(df, table_name, id):
         query += f"""{col} = '{df[col][0]}', """
     query = query[:-2]
     query += f""" WHERE id_{table_name} = {id};"""
-    return query    
+    return query
+
+class Criptografia:
+    def __init__(self, key):
+        self.key = key
+
+    def criptografa(self):
+        senha =  self.key.encode()
+        hash_object = hashlib.sha256()
+        hash_object.update(senha)
+        hash_senha = hash_object.hexdigest()
+        
+        return hash_senha
