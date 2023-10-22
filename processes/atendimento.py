@@ -2,10 +2,12 @@ from flask import Flask, redirect, render_template,request
 from libs.postgresTool import execute_query_df
 from libs.utils import *
 import json
+from flask_jwt_extended import jwt_required
 
 def rotas_atendimento(app):
-
+    
     @app.route('/atendimento-consulta', methods=['POST'])
+    @jwt_required()
     def atendimento_consulta():
         try:
             return {'status':'ok', 'data':get_df_to_json()}
@@ -13,18 +15,21 @@ def rotas_atendimento(app):
             return {'status':'error', 'data':str(e)}
 
     @app.route('/atendimento-cadastro', methods=['POST'])
+    @jwt_required()
     def atendimento_cadastro():
         
         data = request.get_json()
         return insert_atendimento(data=data)
 
     @app.route('/atendimento-excluir', methods=['POST'])
+    @jwt_required()
     def atendimento_excluir():
         
         data = request.get_json()
         return excluir_atendimento(data=data)
 
     @app.route('/atendimento-consulta-detalhes', methods=['POST'])
+    @jwt_required()
     def atendimento_consulta_detalhes():
         try:
             data = request.get_json()
@@ -33,6 +38,7 @@ def rotas_atendimento(app):
             return {'status':'error', 'data':str(e)}
 
     @app.route('/atendimento-editar', methods=['POST'])
+    @jwt_required()
     def atendimento_editar():
         try:
             data = request.get_json()

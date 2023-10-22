@@ -2,10 +2,12 @@ from flask import Flask, redirect, render_template, request
 from libs.postgresTool import execute_query_df, connect_db_psycopg2, execute_query_psycopg2
 from libs.utils import *
 import json
+from flask_jwt_extended import jwt_required
 
 def rotas_paciente(app):
 
     @app.route('/paciente-consulta', methods=['POST'])
+    @jwt_required()
     def paciente_consulta():
         try:
             return {'status':'ok', 'data':get_df_to_json()}
@@ -13,18 +15,21 @@ def rotas_paciente(app):
             return {'status':'error', 'data':str(e)} 
 
     @app.route('/paciente-cadastro', methods=['POST'])
+    @jwt_required()
     def paciente_cadastro():
         
         data = request.get_json()
         return insert_paciente(data=data)
 
     @app.route('/paciente-excluir', methods=['POST'])
+    @jwt_required()
     def paciente_excluir():
         
         data = request.get_json()
         return excluir_paciente(data=data)
 
     @app.route('/paciente-consulta-detalhes', methods=['POST'])
+    @jwt_required()
     def paciente_consulta_detalhes():
         try:
             data = request.get_json()
@@ -33,6 +38,7 @@ def rotas_paciente(app):
             return {'status':'error', 'data':str(e)}
 
     @app.route('/paciente-editar', methods=['POST'])
+    @jwt_required()
     def paciente_editar():
         try:
             data = request.get_json()
@@ -93,10 +99,7 @@ def get_df_to_json(filter=None, data=''):
     js = json.loads(js)
     return js
 
-
-
 def insert_paciente(data):
-        
     df = json_to_df(js=data)
     query = df_to_query(df=df, table_name='paciente')
     res = execute_query_psycopg2(query=query)
@@ -115,4 +118,4 @@ def editar_paciente(data):
     df = json_to_df(js=data)
     query = df_to_update_query(df=df, table_name='paciente', id=id)
     res = execute_query_psycopg2(query=query)
-    return res          
+    return res

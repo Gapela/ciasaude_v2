@@ -2,27 +2,32 @@ from flask import Flask, redirect, render_template, request
 from libs.postgresTool import execute_query_df, execute_query_psycopg2
 from libs.utils import *
 import json
+from flask_jwt_extended import jwt_required
 
 def rotas_profissional(app):
 
     @app.route('/profissional-consulta', methods=['POST'])
+    @jwt_required()
     def profissional_consulta():
         return {'status':'ok', 'data':get_df_to_json()}
     
 
     @app.route('/profissional-cadastro', methods=['POST'])
+    @jwt_required()
     def profissional_cadastro():
         
         data = request.get_json()
         return insert_profissional(data=data)
 
     @app.route('/profissional-excluir', methods=['POST'])
+    @jwt_required()
     def profissional_excluir():
         
         data = request.get_json()
         return excluir_profissional(data=data)
 
     @app.route('/profissional-consulta-detalhes', methods=['POST'])
+    @jwt_required()
     def profissional_consulta_detalhes():
         try:
             data = request.get_json()
@@ -31,6 +36,7 @@ def rotas_profissional(app):
             return {'status':'error', 'data':str(e)}
 
     @app.route('/profissional-editar', methods=['POST'])
+    @jwt_required()
     def profissional_editar():
         try:
             data = request.get_json()

@@ -4,9 +4,11 @@ from processes.atendimento import rotas_atendimento
 from processes.paciente import rotas_paciente
 from processes.profissional import rotas_profissional
 from processes.relatorio import rotas_relatorio
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 
 app = Flask(__name__)
-
+jwt = JWTManager(app)
+app.config['JWT_SECRET_KEY'] = 'your_secret_key_here'
 # Rotas
 app = rotas_login(app)
 app = rotas_atendimento(app)
