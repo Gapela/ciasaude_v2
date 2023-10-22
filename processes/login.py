@@ -10,8 +10,8 @@ def rotas_login(app):
     @app.route('/login', methods=['POST'])
     def login():
         try:
-            usuario = 'pelai'
-            senha = 'pelai123'
+            usuario = 'romulo'
+            senha = 'romulo123'
             user = User(usuario, senha)
             status = user.autentica_usuario()
 
@@ -19,6 +19,8 @@ def rotas_login(app):
                 usuario_bd = user.pegar_usuario_bd()
                 print(usuario_bd)
                 return jsonify(usuario_bd)
+            else:
+                return jsonify(status)
             
         except Exception as e:
             return jsonify({'status': 'erro', 'message': str(e)})
@@ -29,6 +31,22 @@ class User:
     def __init__(self, usuario, senha):
         self.usuario = usuario
         self.senha = senha
+    
+    def gera_token(self):
+        try:
+            payload = {
+                'usuario': self.usuario,
+                'senha': self.senha
+            }
+            token = jwt.encode(
+                payload,
+                'chave_secreta',
+                algorithm='HS256'
+            )
+            return token
+        
+        except Exception as e:
+            return {'status': 'erro', 'message': str(e)}
 
     def autentica_usuario(self):
         try:
@@ -53,7 +71,7 @@ class User:
             id_usuario = str(dados_usuario.loc[0:0, 'id_usuario'].iloc[0])
             usuario = dados_usuario.loc[0:0, 'usuario'].iloc[0]
             email = dados_usuario.loc[0:0, 'email'].iloc[0]
-            token = 'token_test'
+            token = self.gera_token()
             
             return {'status': 'ok', 'data': {'id_usuario': id_usuario, 'usuario': usuario, 'email': email, 'token': token}}
                 
