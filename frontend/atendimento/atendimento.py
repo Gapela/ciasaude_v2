@@ -6,7 +6,7 @@ atendimento_bp = Blueprint("atendimento", __name__, template_folder="templates",
 
 @atendimento_bp.route('/atendimento')
 def atendimento():
-    return 'Página do atendimento'
+    return render_template('atendimento.html')
 
 
 @atendimento_bp.route('/atendimento/<int:atendimento_id>')

@@ -6,7 +6,7 @@ profissional_bp = Blueprint("profissional", __name__, template_folder="templates
 
 @profissional_bp.route('/profissional')
 def profissional():
-    return 'Página do profissional'
+    return render_template('profissional.html')
 
 
 @profissional_bp.route('/profissional/<int:profissional_id>')
