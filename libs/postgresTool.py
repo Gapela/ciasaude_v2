@@ -50,4 +50,3 @@ def execute_query_df(query):
     df = read_sql_query(query, connection)
     connection.close()
     return df
-    

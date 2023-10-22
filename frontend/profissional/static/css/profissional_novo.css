@@ -1,0 +1,151 @@
+.container-profissional-novo {
+  margin: 20px 300px;
+
+  padding: 20px;
+  border-radius: 10px;
+  /*background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);*/
+}
+
+.title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+}
+
+.form-content {
+  margin-top: 30px;
+  /* display: grid;
+  justify-content: center;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr; */
+}
+
+.form-content .nome-endereco {
+  margin-top: 30px;
+  display: grid;
+  gap: 30px;
+}
+
+.form-content .four-items {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.form-content .two-right {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.form-content .one-line {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.form-content .three-items {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.form-content .two-vertical {
+  margin-top: 30px;
+  display: grid;
+  gap: 30px;
+}
+
+.upload {
+  margin-top: 30px;
+}
+
+input[type="text"] {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+.form-input {
+  display: flex;
+  flex-direction: column;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.form-input label {
+  margin: 0 5px;
+  font-size: 18px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.actions {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.button-table-action {
+  text-decoration: none;
+}
+
+.button-table-action {
+  width: 100px;
+  height: 40px;
+  background-color: #a9cf3c;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 600;
+  border: none !important;
+  transition: all linear 160ms;
+  cursor: pointer;
+  margin: 0 !important;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-table-action:hover {
+  transform: scale(1.05);
+  background-color: #a9cf3c;
+}
