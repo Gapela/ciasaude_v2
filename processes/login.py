@@ -4,19 +4,22 @@ from datetime import datetime, timedelta
 from flask import request, jsonify
 from libs.utils import *
 import jwt
-
+from flask_cors import CORS, cross_origin
 
 def rotas_login(app):
 
     @app.route('/protected', methods=['GET'])
     @jwt_required()
+    @cross_origin()
     def rota_protegida():
         user_name = get_jwt_identity()
         return jsonify({'message': f'Authenticated user: {user_name}'})
 
     @app.route('/login', methods=['POST'])
+    @cross_origin()
     def login():
         try:
+            
             usuario = request.json['usuario']
             senha = request.json['senha']
             user = User(usuario, senha)
@@ -30,6 +33,8 @@ def rotas_login(app):
                 return jsonify(status)
             
         except Exception as e:
+            #printa o conteudo do request
+            print(request.json)
             return jsonify({'status': 'erro', 'message': str(e)})
         
     return app

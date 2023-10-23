@@ -3,11 +3,13 @@ from libs.postgresTool import execute_query_df, connect_db_psycopg2, execute_que
 from libs.utils import *
 import json
 from flask_jwt_extended import jwt_required
+from flask_cors import CORS, cross_origin
 
 def rotas_paciente(app):
 
     @app.route('/paciente-consulta', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def paciente_consulta():
         try:
             return {'status':'ok', 'data':get_df_to_json()}
@@ -16,6 +18,7 @@ def rotas_paciente(app):
 
     @app.route('/paciente-cadastro', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def paciente_cadastro():
         
         data = request.get_json()
@@ -23,6 +26,7 @@ def rotas_paciente(app):
 
     @app.route('/paciente-excluir', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def paciente_excluir():
         
         data = request.get_json()
@@ -30,6 +34,7 @@ def rotas_paciente(app):
 
     @app.route('/paciente-consulta-detalhes', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def paciente_consulta_detalhes():
         try:
             data = request.get_json()
@@ -39,6 +44,7 @@ def rotas_paciente(app):
 
     @app.route('/paciente-editar', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def paciente_editar():
         try:
             data = request.get_json()

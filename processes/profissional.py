@@ -3,17 +3,20 @@ from libs.postgresTool import execute_query_df, execute_query_psycopg2
 from libs.utils import *
 import json
 from flask_jwt_extended import jwt_required
+from flask_cors import CORS, cross_origin
 
 def rotas_profissional(app):
 
     @app.route('/profissional-consulta', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def profissional_consulta():
         return {'status':'ok', 'data':get_df_to_json()}
     
 
     @app.route('/profissional-cadastro', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def profissional_cadastro():
         
         data = request.get_json()
@@ -21,6 +24,7 @@ def rotas_profissional(app):
 
     @app.route('/profissional-excluir', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def profissional_excluir():
         
         data = request.get_json()
@@ -28,6 +32,7 @@ def rotas_profissional(app):
 
     @app.route('/profissional-consulta-detalhes', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def profissional_consulta_detalhes():
         try:
             data = request.get_json()
@@ -37,6 +42,7 @@ def rotas_profissional(app):
 
     @app.route('/profissional-editar', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def profissional_editar():
         try:
             data = request.get_json()

@@ -6,7 +6,8 @@
     <!-- Inclua o link para o arquivo CSS do Bootstrap -->
   </head>
 
-  <body class="container-body">
+  <body class="container-body" onload="verificarLogin()">
     {% block navbar %} {% endblock %} {% block content %} {% endblock %}
   </body>
+  <script src="page/static/js/page.js"></script>
 </html>

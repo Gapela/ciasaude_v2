@@ -3,11 +3,13 @@ from libs.postgresTool import execute_query_df
 from libs.utils import *
 import json
 from flask_jwt_extended import jwt_required
+from flask_cors import CORS, cross_origin
 
 def rotas_atendimento(app):
     
     @app.route('/atendimento-consulta', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def atendimento_consulta():
         try:
             return {'status':'ok', 'data':get_df_to_json()}
@@ -16,6 +18,7 @@ def rotas_atendimento(app):
 
     @app.route('/atendimento-cadastro', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def atendimento_cadastro():
         
         data = request.get_json()
@@ -23,6 +26,7 @@ def rotas_atendimento(app):
 
     @app.route('/atendimento-excluir', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def atendimento_excluir():
         
         data = request.get_json()
@@ -30,6 +34,7 @@ def rotas_atendimento(app):
 
     @app.route('/atendimento-consulta-detalhes', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def atendimento_consulta_detalhes():
         try:
             data = request.get_json()
@@ -39,6 +44,7 @@ def rotas_atendimento(app):
 
     @app.route('/atendimento-editar', methods=['POST'])
     @jwt_required()
+    @cross_origin()
     def atendimento_editar():
         try:
             data = request.get_json()
