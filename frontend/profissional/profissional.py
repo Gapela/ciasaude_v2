@@ -12,3 +12,7 @@ def profissional():
 @profissional_bp.route('/profissional/<int:profissional_id>')
 def profissional_detail(profissional_id):
     return f'Página do profissional {profissional_id}'
+
+@profissional_bp.route('/profissional-novo')
+def profissional_novo():
+    return render_template('profissional_novo.html')

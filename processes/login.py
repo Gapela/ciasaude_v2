@@ -48,17 +48,6 @@ class User:
         try:
             expires_delta = timedelta(minutes=180)
             access_token = create_access_token(identity= self.usuario, expires_delta=expires_delta)
-            print(access_token)
-            # payload = {
-            #     'usuario': self.usuario,
-            #     'senha': self.senha
-            # }
-            # token = jwt.encode(
-            #     access_token,
-            #     'chave_secreta',
-            #     algorithm='HS256'
-            # )
-            # print(token)
             return access_token
         
         except Exception as e:
