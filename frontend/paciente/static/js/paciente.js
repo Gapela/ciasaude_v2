@@ -1,59 +1,14 @@
 function get_paciente() {
   // Faz a requisição para a API
-
-  //pega o resultado da requisição e coloca na variavel retorno_request
-  retorno_request = {
-    data: [
-      {
-        cep: "23047610",
-        cid: "",
-        cpf: "175719",
-        crm: "",
-        data_nascimento: "23/05/1990",
-        email: "ROMULO@GMAIL.COM",
-        empresa: "",
-        endereco: "MINHA RUA",
-        id_paciente: 1,
-        medico_solicitante: "GABRIEL PELUDO",
-        nome: "GABRIEL PELUDO",
-        numero_carteirinha: "",
-        observacao: "",
-        ocupacao: "",
-        pagamento: "",
-        plano: "",
-        responsavel: "EU",
-        rg: "RG",
-        telefone: "21XXXXX",
-      },
-      {
-        cep: "23047610",
-        cid: "",
-        cpf: "175719",
-        crm: "",
-        data_nascimento: "23/05/1990",
-        email: "ROMULO@GMAIL.COM",
-        empresa: "",
-        endereco: "MINHA RUA",
-        id_paciente: 2,
-        medico_solicitante: "GABRIEL PELUDO",
-        nome: "Romulo",
-        numero_carteirinha: "",
-        observacao: "",
-        ocupacao: "",
-        pagamento: "",
-        plano: "",
-        responsavel: "EU",
-        rg: "RG",
-        telefone: "21XXXXX",
-      },
-    ],
-    status: "ok",
-  };
+  url = url_api + "paciente-consulta";
+  body = {};
+  token = sessionStorage.getItem("token");
+  response = request_backend(url, body, token);
 
   //crie uma condição para caso seja 'ok' ou 'error'
-  if (retorno_request.status == "ok") {
+  if (response.status == "ok") {
     //se for ok, chama a função para montar a tabela
-    monta_tabela(retorno_request.data);
+    monta_tabela(response.data);
   } else {
     //se for error, mostra uma mensagem de erro
     alert("Ocorreu um erro ao buscar os dados");

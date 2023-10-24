@@ -12,8 +12,10 @@ def rotas_paciente(app):
     @cross_origin()
     def paciente_consulta():
         try:
+            print({'status':'ok', 'data':get_df_to_json()})
             return {'status':'ok', 'data':get_df_to_json()}
         except Exception as e:
+            print({'status':'error', 'data':str(e)} )
             return {'status':'error', 'data':str(e)} 
 
     @app.route('/paciente-cadastro', methods=['POST'])
