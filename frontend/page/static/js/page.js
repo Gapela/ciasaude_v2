@@ -17,13 +17,16 @@ function request_backend(url, body, token) {
     body: raw,
     redirect: "follow",
   };
-  fetch(url, requestOptions)
+  return fetch(url, requestOptions)
     .then((response) => response.json())
     .then((result) =>
       //cria uma condição para verificar se o status foi ok ou não nok
       {
-        alert("Resultado: " + result.status);
+        //retorna o json que veio da api
+        return result;
       }
     )
     .catch((error) => console.log("error", error));
 }
+
+window.request_backend = request_backend;

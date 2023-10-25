@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template,request
-from libs.postgresTool import execute_query_df
+from libs.postgresTool import execute_query_df, execute_query_psycopg2
 from libs.utils import *
 import json
 from flask_jwt_extended import jwt_required
