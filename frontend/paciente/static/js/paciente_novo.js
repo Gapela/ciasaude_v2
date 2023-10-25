@@ -19,4 +19,10 @@ function get_content() {
   //pegar os valores do textarea e do select
   json["descricao"] = document.querySelector("textarea").value;
   json["tipo"] = document.querySelector("select").value;
+  //pegar os dados do input file
+  json["imagem"] = document.querySelector("input[type=file]").files[0];
+
+  //redirecionar para a página de cadastro de atendimento
+  window.location.href = "/atendimento-novo";
+  return json;
 }
