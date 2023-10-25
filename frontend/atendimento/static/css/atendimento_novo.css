@@ -43,6 +43,14 @@
   gap: 30px;
 }
 
+.form-content .two-center {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  justify-content: center;
+}
+
 .form-content .one-line {
   margin-top: 30px;
   display: grid;
