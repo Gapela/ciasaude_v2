@@ -9,10 +9,15 @@
   <div class="form-content">
 
     <div class="two-right">
-    <div class="form-input">
-      <label for="usuario">Nome</label>
-      <input type="text" placeholder="Insira o nome completo" autofocus="true" id="nome" />
-    </div>
+      <div class="form-input">
+        <label for="usuario">Nome</label>
+        <select name="especialidade" id="especialidade" class="select">
+          <!--crie uma opção padrao-->
+          <option value="0">Sem nome</option>
+          <option value="nome_1">Nome 1</option>
+          <option value="nome_2">Nome 2</option>
+        </select>
+      </div>
     
     <div class="form-input">
       <label for="usuario">CPF</label>
