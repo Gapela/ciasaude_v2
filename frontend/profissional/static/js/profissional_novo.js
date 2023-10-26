@@ -17,6 +17,12 @@ function get_content() {
   }
 
   //pegar os valores do textarea e do select
-  json["descricao"] = document.querySelector("textarea").value;
-  json["tipo"] = document.querySelector("select").value;
+  json["obs_especializacao"] = document.querySelector("textarea").value;
+
+  //percorra cada select e pegue o valor selecionado usando o id como chave do json
+  const selects = document.querySelectorAll("select");
+  for (let i = 0; i < selects.length; i++) {
+    json[selects[i].id] = selects[i].value;
+  }
+  window.insert_database(json, "profissional-cadastro", "/profissional");
 }

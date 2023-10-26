@@ -22,6 +22,7 @@ def rotas_atendimento(app):
     def atendimento_cadastro():
         
         data = request.get_json()
+        
         return insert_atendimento(data=data)
 
     @app.route('/atendimento-excluir', methods=['POST'])
@@ -57,12 +58,20 @@ def rotas_atendimento(app):
 
 def get_df_to_json(filter=None, data=''):
     if filter==None:   
-        query = """SELECT id_atendimento, nome, cpf, especialidade, profissional_responsavel, observacao, data_inicio, data_fim, id_paciente, id_profissional
-	FROM public.atendimento where data_exclusao is null;"""
+        query = """select atend.id_atendimento, atend.cpf, pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
+left join paciente pac
+on atend.id_paciente = pac.id_paciente
+left join profissional prof
+on atend.id_profissional = prof.id_profissional
+where atend.data_exclusao is null"""
     else:
         id = data['id']
-        query = f"""SELECT id_atendimento, nome, cpf, especialidade, profissional_responsavel, observacao, data_inicio, data_fim, id_paciente, id_profissional
-            FROM public.atendimento WHERE id_atendimento = {id};"""
+        query = f"""select atend.id_atendimento, atend.cpf, pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
+left join paciente pac
+on atend.id_paciente = pac.id_paciente
+left join profissional prof
+on atend.id_profissional = prof.id_profissional
+where atend.data_exclusao is null and atend.id_atendimento = {id}"""
 
     df = execute_query_df(query)
     js = df_to_json(df)
@@ -72,6 +81,7 @@ def get_df_to_json(filter=None, data=''):
 def insert_atendimento(data):
         
     df = json_to_df(js=data)
+    
     query = df_to_query(df=df, table_name='atendimento')
     res = execute_query_psycopg2(query=query)
 

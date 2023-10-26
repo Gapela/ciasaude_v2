@@ -25,9 +25,9 @@ function monta_data_table(data) {
     // cria um novo objeto com os dados que serão exibidos na tabela
 
     const atendimentoData = {
-      nome: atendimento.nome,
+      paciente: atendimento.paciente,
       especialidade: atendimento.especialidade,
-      profissional: atendimento.id_profissional,
+      profissional: atendimento.profissional,
       data_inicio: atendimento.data_inicio,
       data_fim: atendimento.data_fim,
     };
@@ -40,7 +40,7 @@ function monta_data_table(data) {
   $("#atendimento").DataTable({
     data: dataSet,
     columns: [
-      { title: "Nome", data: "nome" },
+      { title: "Paciente", data: "paciente" },
       { title: "Especialidade", data: "especialidade" },
       { title: "Profissional", data: "profissional" },
       { title: "Data de Início", data: "data_inicio" },
