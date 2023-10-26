@@ -29,4 +29,25 @@ function request_backend(url, body, token) {
     .catch((error) => console.log("error", error));
 }
 
+function insert_database(json, endpoint, redirect) {
+  url = window.url_api + endpoint;
+  body = json;
+  token = sessionStorage.getItem("token");
+
+  window
+    .request_backend(url, body, token)
+    .then((data) => {
+      if (data.status == "ok") {
+        //redirecionar para o link na variavel redirect
+        window.location.href = redirect;
+      } else {
+        alert("Erro: " + data.status);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 window.request_backend = request_backend;
+window.insert_database = insert_database;

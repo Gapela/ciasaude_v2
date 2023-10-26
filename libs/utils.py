@@ -8,7 +8,16 @@ def df_to_json(df):
 
 #função para pegar um json e transformar em dataframe
 def json_to_df(js):
-    js = json.dumps(js)
+    try:
+        if isinstance(js, list):
+            js = json.dumps(js)
+        else:
+            # inclue o json numa lista
+            js = json.dumps([js])    
+    except Exception as e:
+        print(e)
+    
+    
     res = pd.read_json(js, orient='records')
     return res
 
