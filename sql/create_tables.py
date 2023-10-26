@@ -23,7 +23,8 @@ queries = [
         empresa TEXT,
         numero_carteirinha TEXT,
         plano TEXT,
-        data_exclusao TEXT
+        data_exclusao TEXT,
+        arquivo TEXT
     );
     """,
     """ DROP TABLE IF EXISTS atendimento;
@@ -59,7 +60,8 @@ queries = [
         banco TEXT,
         agencia TEXT,
         conta TEXT,
-        data_exclusao TEXT
+        data_exclusao TEXT,
+        arquivo TEXT
     );
     """,
     """DROP TABLE IF EXISTS usuario;
