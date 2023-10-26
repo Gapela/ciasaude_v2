@@ -3,7 +3,7 @@ import libs.postgresTool as pgt
 # Execute the SQL queries
 queries = [
     """ DROP TABLE IF EXISTS paciente;
-    CREATE TABLE paciente (
+        CREATE TABLE paciente (
         id_paciente SERIAL PRIMARY KEY,
         nome TEXT,
         endereco TEXT,
@@ -12,7 +12,7 @@ queries = [
         cpf TEXT,
         telefone TEXT,
         email TEXT,
-        data_nascimento DATE,
+        data_nascimento TEXT,
         responsavel TEXT,
         medico_solicitante TEXT,
         crm TEXT,
@@ -23,26 +23,26 @@ queries = [
         empresa TEXT,
         numero_carteirinha TEXT,
         plano TEXT,
-        data_exclusao timestamp without time zone
+        data_exclusao TEXT
     );
     """,
     """ DROP TABLE IF EXISTS atendimento;
-    CREATE TABLE atendimento (
+        CREATE TABLE atendimento (
         id_atendimento SERIAL PRIMARY KEY,
         nome TEXT,
         cpf TEXT,
         especialidade TEXT,
         profissional_responsavel TEXT,
         observacao TEXT,
-        data_inicio DATE,
-        data_fim DATE,
+        data_inicio TEXT,
+        data_fim TEXT,
         id_paciente INT,
         id_profissional INT,
-        data_exclusao timestamp without time zone
+        data_exclusao TEXT
     );
     """,
     """DROP TABLE IF EXISTS profissional;
-    CREATE TABLE profissional (
+        CREATE TABLE profissional (
         id_profissional SERIAL PRIMARY KEY,
         nome TEXT,
         endereco TEXT,
@@ -59,7 +59,7 @@ queries = [
         banco TEXT,
         agencia TEXT,
         conta TEXT,
-        data_exclusao timestamp without time zone
+        data_exclusao TEXT
     );
     """,
     """DROP TABLE IF EXISTS usuario;
@@ -71,7 +71,7 @@ queries = [
         exclusao TEXT,
         redefinir TEXT,
         ultima_modificacao TEXT,
-        data_exclusao timestamp without time zone
+        data_exclusao TEXT
     );
     """
 ]
@@ -79,4 +79,4 @@ queries = [
 for query in queries:
     print("Executando query")
     pgt.execute_query_psycopg2(query)
-
+    
