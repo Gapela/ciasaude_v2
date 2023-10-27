@@ -30,8 +30,6 @@ queries = [
     """ DROP TABLE IF EXISTS atendimento;
         CREATE TABLE atendimento (
         id_atendimento SERIAL PRIMARY KEY,
-        nome TEXT,
-        cpf TEXT,
         especialidade TEXT,
         profissional_responsavel TEXT,
         observacao TEXT,
