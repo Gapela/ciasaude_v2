@@ -4,6 +4,7 @@ from libs.utils import *
 import json
 from flask_jwt_extended import jwt_required
 from flask_cors import CORS, cross_origin
+import base64
 
 def rotas_profissional(app):
 
@@ -20,6 +21,7 @@ def rotas_profissional(app):
     def profissional_cadastro():
         
         data = request.get_json()
+        
         
         return insert_profissional(data=data)
 
@@ -84,7 +86,7 @@ def get_df_to_json(filter=None, data=''):
     return js
 
 def insert_profissional(data):
-        
+      
     df = json_to_df(js=data)
     
     query = df_to_query(df=df, table_name='profissional')
