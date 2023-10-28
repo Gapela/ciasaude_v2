@@ -19,7 +19,6 @@ def rotas_profissional(app):
     @jwt_required()
     @cross_origin()
     def profissional_cadastro():
-        
         file = request.files['file']
         folder = 'profissional'
         caminho = f'storage/{folder}/' + file.filename
@@ -38,6 +37,7 @@ def rotas_profissional(app):
     def profissional_excluir():
         
         data = request.get_json()
+        print(data)
         return excluir_profissional(data=data)
 
     @app.route('/profissional-consulta-detalhes', methods=['POST'])
@@ -102,7 +102,7 @@ def insert_profissional(data):
     return res    
 
 def excluir_profissional(data):
-    id = data['id']
+    id = data['id_profissional']
     query = delete_from_database(table='profissional', id=id)
     res = execute_query_psycopg2(query=query)
     return res    

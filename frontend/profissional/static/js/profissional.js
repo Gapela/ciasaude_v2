@@ -28,6 +28,7 @@ function monta_data_table(data) {
       nome: profissional.nome,
       crm: profissional.crm,
       especialidade: profissional.especialidade,
+      id_profissional: profissional.id_profissional,
     };
 
     // adiciona o novo objeto ao array dataSet
@@ -66,3 +67,23 @@ function monta_data_table(data) {
 $(document).ready(function () {
   get_profissional();
 });
+
+function editar_profissional(id_profissional) {
+  alert("Editar profissional: " + id_profissional);
+}
+
+function excluir_profissional(id_profissional) {
+  //acionar a api para excluir o profissional
+  url = window.url_api + "profissional-excluir";
+  body = {
+    id_profissional: id_profissional,
+  };
+  token = sessionStorage.getItem("token");
+  window.request_backend(url, body, token).then((data) => {
+    if (data.status == "ok") {
+      window.location.reload();
+    } else {
+      alert("Erro: " + data.status);
+    }
+  });
+}

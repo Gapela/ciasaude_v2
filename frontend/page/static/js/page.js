@@ -141,7 +141,7 @@ function new_send_file(formData, endpoint, redirect) {
     })
     .then(function (data) {
       if (data.status == "ok") {
-        window.location.href = redirect;
+        //window.location.href = redirect;
         return data.file_path;
       } else {
         return data;

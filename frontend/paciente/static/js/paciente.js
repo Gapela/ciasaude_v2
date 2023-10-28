@@ -30,6 +30,7 @@ function monta_data_table(data) {
       email: paciente.email,
       data_nascimento: paciente.data_nascimento,
       forma_pagamento: paciente.pagamento,
+      id_paciente: paciente.id_paciente,
     };
 
     // adiciona o novo objeto ao array dataSet
@@ -70,3 +71,19 @@ function monta_data_table(data) {
 $(document).ready(function () {
   get_paciente();
 });
+
+function excluir_paciente(id_paciente) {
+  //acionar a api para excluir o paciente
+  url = window.url_api + "paciente-excluir";
+  body = {
+    id_paciente: id_paciente,
+  };
+  token = sessionStorage.getItem("token");
+  window.request_backend(url, body, token).then((data) => {
+    if (data.status == "ok") {
+      window.location.reload();
+    } else {
+      alert("Erro: " + data.status);
+    }
+  });
+}

@@ -88,7 +88,7 @@ def insert_atendimento(data):
     return res    
 
 def excluir_atendimento(data):
-    id = data['id']
+    id = data['id_atendimento']
     query = delete_from_database(table='atendimento', id=id)
     res = execute_query_psycopg2(query=query)
     return res    

@@ -101,6 +101,7 @@ def get_df_to_json(filter=None, data=''):
                         email, 
                         data_nascimento, 
                         responsavel, 
+                        cpf_responsavel,
                         medico_solicitante, 
                         crm, 
                         ocupacao, 
@@ -119,12 +120,13 @@ def get_df_to_json(filter=None, data=''):
 def insert_paciente(data):
     df = json_to_df(js=data)
     query = df_to_query(df=df, table_name='paciente')
+    print(query)
     res = execute_query_psycopg2(query=query)
 
     return res
 
 def excluir_paciente(data):
-    id = data['id']
+    id = data['id_paciente']
     query = delete_from_database(table='paciente', id=id)
     res = execute_query_psycopg2(query=query)
     return res
