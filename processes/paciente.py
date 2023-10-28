@@ -89,7 +89,7 @@ def get_df_to_json(filter=None, data=''):
                         plano
                         FROM public.paciente where data_exclusao is null;"""
     else:
-        id = data['id']
+        id = data['id_paciente']
         query = f"""SELECT 
                         id_paciente, 
                         nome, 

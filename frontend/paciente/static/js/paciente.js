@@ -87,3 +87,7 @@ function excluir_paciente(id_paciente) {
     }
   });
 }
+
+function editar_paciente(id_paciente) {
+  window.location.href = "paciente-editar?id_paciente=" + id_paciente;
+}

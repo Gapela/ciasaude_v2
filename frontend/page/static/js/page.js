@@ -40,7 +40,7 @@ function insert_database(json, endpoint, redirect) {
       console.log(data);
       if (data.status == "ok") {
         //redirecionar para o link na variavel redirect
-        //window.location.href = redirect;
+        window.location.href = redirect;
       } else {
         alert("Erro: " + data.data);
       }
@@ -141,7 +141,7 @@ function new_send_file(formData, endpoint, redirect) {
     })
     .then(function (data) {
       if (data.status == "ok") {
-        //window.location.href = redirect;
+        window.location.href = redirect;
         return data.file_path;
       } else {
         return data;
