@@ -50,26 +50,6 @@ function insert_database(json, endpoint, redirect) {
     });
 }
 
-function get_base64(file) {
-  return new Promise(function (resolve, reject) {
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      var base64 = reader.result.split(",")[1]; // extrai a string base64
-      var objeto = {
-        nome: file.name,
-        tipo: file.type,
-        tamanho: file.size,
-        base64: base64,
-      };
-      resolve(objeto);
-    };
-    reader.onerror = function (error) {
-      reject(error);
-    };
-  });
-}
-
 function get_all_input_content_js(inputs, folder) {
   json = {};
   for (let i = 0; i < inputs.length; i++) {
@@ -96,7 +76,7 @@ function get_all_input_content_js(inputs, folder) {
   return json;
 }
 
-function send_file(arquivo, folder) {
+function send_file(arquivo, folder, fields) {
   var myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
@@ -125,7 +105,54 @@ function send_file(arquivo, folder) {
     });
 }
 
+function get_all_input_content_formdata(inputs, folder) {
+  //cria um objeto do tipo FormData
+  var formData = new FormData();
+  //percorre todos os inputs
+  for (let i = 0; i < inputs.length; i++) {
+    //verifica se o input é do tipo file
+    if (inputs[i].type == "file") {
+      //se for, adiciona o arquivo no formData
+      formData.append("file", inputs[i].files[0]);
+    } else {
+      //se não for, adiciona o input no formData
+      formData.append(inputs[i].id, inputs[i].value);
+    }
+  }
+  return formData;
+}
+
+function new_send_file(formData, endpoint, redirect) {
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Authorization",
+    "Bearer " + sessionStorage.getItem("token")
+  );
+  url = window.url_api + endpoint;
+
+  return fetch(url, {
+    method: "POST",
+    body: formData,
+    headers: myHeaders,
+    redirect: "follow",
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      if (data.status == "ok") {
+        window.location.href = redirect;
+        return data.file_path;
+      } else {
+        return data;
+      }
+    })
+    .catch(function (error) {
+      console.error("Erro ao enviar arquivo: ", error);
+    });
+}
+
 window.request_backend = request_backend;
 window.insert_database = insert_database;
-window.get_base64 = get_base64;
 window.get_all_input_content_js = get_all_input_content_js;
+window.get_all_input_content_formdata = get_all_input_content_formdata;

@@ -11,8 +11,10 @@ def rotas_upload(app):
         
         file = request.files['file']
         folder = request.form['folder']
+        
         caminho = f'storage/{folder}/' + file.filename
         file.save(caminho)
+        caminho = ['storage', folder, file.filename]
         return {'status':'ok', "file_path":caminho}
     
     return app
