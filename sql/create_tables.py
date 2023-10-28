@@ -14,6 +14,7 @@ queries = [
         email TEXT,
         data_nascimento TEXT,
         responsavel TEXT,
+        cpf_responsavel TEXT,
         medico_solicitante TEXT,
         crm TEXT,
         ocupacao TEXT,
