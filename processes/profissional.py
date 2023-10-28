@@ -20,10 +20,17 @@ def rotas_profissional(app):
     @cross_origin()
     def profissional_cadastro():
         
-        data = request.get_json()
+        file = request.files['file']
+        folder = 'profissional'
+        caminho = f'storage/{folder}/' + file.filename
+        file.save(caminho)
+        data = request.form.to_dict()
+        data['arquivo'] = caminho
         
-        
-        return insert_profissional(data=data)
+        print(data)
+        res = insert_profissional(data=data)
+        print(res)
+        return res
 
     @app.route('/profissional-excluir', methods=['POST'])
     @jwt_required()

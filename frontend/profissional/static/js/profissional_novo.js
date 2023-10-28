@@ -1,16 +1,17 @@
 function get_content() {
   const inputs = document.querySelectorAll("input");
 
-  json = window.get_all_input_content_js(inputs, "profissional");
+  form = window.get_all_input_content_formdata(inputs, "profissional");
 
-  json["obs_especializacao"] = document.querySelector("textarea").value;
+  form.append("obs_especializacao", document.querySelector("textarea").value);
 
   //percorra cada select e pegue o valor selecionado usando o id como chave do json
   const selects = document.querySelectorAll("select");
   for (let i = 0; i < selects.length; i++) {
-    json[selects[i].id] = selects[i].value;
+    form.append(selects[i].id, selects[i].value);
   }
 
-  console.log(json);
-  window.insert_database(json, "profissional-cadastro", "/profissional");
+  console.log(form);
+  res = window.new_send_file(form, "profissional-cadastro", "/profissional");
+  console.log(res);
 }

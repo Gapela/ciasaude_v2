@@ -23,8 +23,17 @@ def rotas_paciente(app):
     @cross_origin()
     def paciente_cadastro():
         
-        data = request.get_json()
-        return insert_paciente(data=data)
+        file = request.files['file']
+        folder = 'paciente'
+        caminho = f'storage/{folder}/' + file.filename
+        file.save(caminho)
+        data = request.form.to_dict()
+        data['arquivo'] = caminho
+        
+        print(data)
+        res = insert_paciente(data=data)
+        print(res)
+        return res
 
     @app.route('/paciente-excluir', methods=['POST'])
     @jwt_required()
