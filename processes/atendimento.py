@@ -21,9 +21,12 @@ def rotas_atendimento(app):
     @cross_origin()
     def atendimento_cadastro():
         
-        data = request.get_json()
+        data = request.form.to_dict()
         
-        return insert_atendimento(data=data)
+        print(data)
+        res = insert_atendimento(data=data)
+        print(res)
+        return res
 
     @app.route('/atendimento-excluir', methods=['POST'])
     @jwt_required()
@@ -43,6 +46,16 @@ def rotas_atendimento(app):
         except Exception as e:
             return {'status':'error', 'data':str(e)}
 
+    @app.route('/atendimento-paciente-profissional', methods=['POST'])
+    @jwt_required()
+    @cross_origin()
+    def atendimento_paciente_profissional():
+        try:
+            data = request.get_json()
+            return {'status':'ok', 'data':get_df_to_json(filter='atendimento_list', data=data)}
+        except Exception as e:
+            return {'status':'error', 'data':str(e)}
+
     @app.route('/atendimento-editar', methods=['POST'])
     @jwt_required()
     @cross_origin()
@@ -58,20 +71,30 @@ def rotas_atendimento(app):
 
 def get_df_to_json(filter=None, data=''):
     if filter==None:   
-        query = """select atend.id_atendimento, atend.cpf, pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
-left join paciente pac
-on atend.id_paciente = pac.id_paciente
-left join profissional prof
-on atend.id_profissional = prof.id_profissional
-where atend.data_exclusao is null"""
+        query = """select atend.id_atendimento, pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
+        left join paciente pac
+        on atend.id_paciente = pac.id_paciente
+        left join profissional prof
+        on atend.id_profissional = prof.id_profissional
+        where atend.data_exclusao is null"""
+    elif filter=='atendimento_list':
+        query_1 = "select id_paciente, concat(nome,' - ', cpf) as paciente from paciente where data_exclusao is null"
+        query_2 = "select id_profissional,concat(nome,' - ', crm) as profissional from profissional where data_exclusao is null"
+        df_1 = execute_query_df(query_1)
+        df_2 = execute_query_df(query_2)
+        js_1 = df_to_json(df_1)
+        js_2 = df_to_json(df_2)
+        js = {'paciente':json.loads(js_1), 'profissional':json.loads(js_2)}
+        
+        return js
     else:
         id = data['id']
-        query = f"""select atend.id_atendimento, atend.cpf, pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
-left join paciente pac
-on atend.id_paciente = pac.id_paciente
-left join profissional prof
-on atend.id_profissional = prof.id_profissional
-where atend.data_exclusao is null and atend.id_atendimento = {id}"""
+        query = f"""select atend.id_atendimento,  pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
+        left join paciente pac
+        on atend.id_paciente = pac.id_paciente
+        left join profissional prof
+        on atend.id_profissional = prof.id_profissional
+        where atend.data_exclusao is null and atend.id_atendimento = {id}"""
 
     df = execute_query_df(query)
     js = df_to_json(df)

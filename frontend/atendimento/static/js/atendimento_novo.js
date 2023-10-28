@@ -1,22 +1,51 @@
 function get_content() {
   const inputs = document.querySelectorAll("input");
 
-  json = {};
-  for (let i = 0; i < inputs.length; i++) {
-    //converter os inputs em json usando o id do input como chave e a value como valor
-    json[inputs[i].id] = inputs[i].value;
+  form = window.get_all_input_content_formdata(inputs, "atendimento");
 
-    //verifica se o input é do tipo checkbox
-    if (inputs[i].type == "checkbox") {
-      //se for, desmarca o checkbox
-      inputs[i].checked = false;
-    } else {
-      //se não for, limpa o campo
-      inputs[i].value = "";
-    }
+  form.append("observacao", document.getElementById("observacao").value);
+
+  //percorra cada select e pegue o valor selecionado usando o id como chave do json
+  const selects = document.querySelectorAll("select");
+  for (let i = 0; i < selects.length; i++) {
+    form.append(selects[i].id, selects[i].value);
   }
 
-  //pegar os valores do textarea e do select
-  json["descricao"] = document.querySelector("textarea").value;
-  json["tipo"] = document.querySelector("select").value;
+  res = window.new_send_file(form, "atendimento-cadastro", "/atendimento");
+  console.log(res);
+  return form;
 }
+
+function get_paciente_profissional() {
+  url = window.url_api + "atendimento-paciente-profissional";
+  token = sessionStorage.getItem("token");
+  body = {};
+
+  window
+    .request_backend(url, body, token)
+    .then((data) => {
+      console.log(data);
+      if (data.status == "ok") {
+        data.data.paciente.forEach((paciente) => {
+          document.querySelector("#id_paciente").innerHTML += `
+          <option value="${paciente.id_paciente}">${paciente.paciente}</option>
+          `;
+        });
+        data.data.profissional.forEach((profissional) => {
+          document.querySelector("#id_profissional").innerHTML += `
+          <option value="${profissional.id_profissional}">${profissional.profissional}</option>
+          `;
+        });
+      } else {
+        alert("Erro: " + data.data);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+//quando a pagina carregar, chama a função get_content
+window.onload = function () {
+  get_paciente_profissional();
+};

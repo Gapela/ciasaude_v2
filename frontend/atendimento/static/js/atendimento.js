@@ -30,6 +30,7 @@ function monta_data_table(data) {
       profissional: atendimento.profissional,
       data_inicio: atendimento.data_inicio,
       data_fim: atendimento.data_fim,
+      id_atendimento: atendimento.id_atendimento,
     };
 
     // adiciona o novo objeto ao array dataSet
@@ -70,3 +71,26 @@ function monta_data_table(data) {
 $(document).ready(function () {
   get_atendimento();
 });
+
+function editar_atendimento(id_atendimento) {
+  alert("Editar atendimento: " + id_atendimento);
+}
+
+function excluir_atendimento(id_atendimento) {
+  url = window.url_api + "atendimento-excluir";
+  token = sessionStorage.getItem("token");
+  body = { id_atendimento: id_atendimento };
+
+  window
+    .request_backend(url, body, token)
+    .then((data) => {
+      if (data.status == "ok") {
+        window.location.href = "/atendimento";
+      } else {
+        alert("Erro: " + data.status);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
