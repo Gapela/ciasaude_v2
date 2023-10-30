@@ -105,7 +105,7 @@ function send_file(arquivo, folder, fields) {
     });
 }
 
-function get_all_input_content_formdata(inputs, folder) {
+function get_all_input_content_formdata(inputs) {
   //cria um objeto do tipo FormData
   var formData = new FormData();
   //percorre todos os inputs

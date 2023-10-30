@@ -73,7 +73,7 @@ $(document).ready(function () {
 });
 
 function editar_atendimento(id_atendimento) {
-  alert("Editar atendimento: " + id_atendimento);
+  window.location.href = "/atendimento-editar?id_atendimento=" + id_atendimento;
 }
 
 function excluir_atendimento(id_atendimento) {

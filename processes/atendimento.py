@@ -61,7 +61,9 @@ def rotas_atendimento(app):
     @cross_origin()
     def atendimento_editar():
         try:
-            data = request.get_json()
+            
+            data = request.form.to_dict()
+            print(data)
             return editar_atendimento(data=data)
         except Exception as e:
             return {'status':'error', 'data':str(e)}
@@ -88,8 +90,8 @@ def get_df_to_json(filter=None, data=''):
         
         return js
     else:
-        id = data['id']
-        query = f"""select atend.id_atendimento,  pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
+        id = data['id_atendimento']
+        query = f"""select atend.id_atendimento, pac.id_paciente, prof.id_profissional,  pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
         left join paciente pac
         on atend.id_paciente = pac.id_paciente
         left join profissional prof
@@ -117,7 +119,7 @@ def excluir_atendimento(data):
     return res    
 
 def editar_atendimento(data):
-    id = data['id']
+    id = data['id_atendimento']
     df = json_to_df(js=data)
     query = df_to_update_query(df=df, table_name='atendimento', id=id)
     res = execute_query_psycopg2(query=query)
