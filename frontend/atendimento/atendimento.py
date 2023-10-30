@@ -9,9 +9,9 @@ def atendimento():
     return render_template('atendimento.html')
 
 
-@atendimento_bp.route('/atendimento/<int:atendimento_id>')
-def atendimento_detail(atendimento_id):
-    return f'Página do atendimento {atendimento_id}'
+@atendimento_bp.route('/atendimento-editar')
+def atendimento_detail():
+    return render_template('atendimento_editar.html')
 
 @atendimento_bp.route('/atendimento-novo')
 def atendimento_novo():

@@ -1,0 +1,67 @@
+{% extends "navbar.html" %} {% block content %}
+
+<link rel="stylesheet" href="atendimento/static/css/atendimento_novo.css" />
+
+<div class="container-atendimento-novo">
+  <div class="title">Módulo de Tratamentos - Editar</div>
+
+  <div class="form-content">
+    <div class="two-right">
+      <div class="form-input">
+        <label for="usuario">Nome do Paciente</label>
+        <select name="paciente" id="id_paciente" class="select">
+          <!--crie uma opção padrao-->
+        </select>
+      </div>
+    </div>
+
+    <div class="nome-endereco">
+      <div class="form-input">
+        <label for="usuario">Profissional Responsável</label>
+        <select name="Profissional" id="id_profissional" class="select">
+          <!--crie uma opção padrao-->
+        </select>
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Observação</label>
+        <textarea
+          type="text-area"
+          placeholder="Insira a observação"
+          autofocus="true"
+          id="observacao"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="two-center">
+      <div class="form-input">
+        <label for="usuario">Data de início</label>
+        <input
+          type="text"
+          placeholder="XX/XX/XXXX"
+          autofocus="true"
+          id="data_inicio"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Data de fim</label>
+        <input
+          type="text"
+          placeholder="XX/XX/XXXX"
+          autofocus="true"
+          id="data_fim"
+        />
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="button-table-action" onclick="get_atendimento_edit()">Salvar</a
+      ><a class="button-table-action" href="/atendimento">Voltar</a>
+    </div>
+  </div>
+
+  <script src="atendimento/static/js/atendimento_editar.js"></script>
+  {% endblock %}
+</div>
