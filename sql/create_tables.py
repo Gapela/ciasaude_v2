@@ -74,6 +74,17 @@ queries = [
         ultima_modificacao TEXT,
         data_exclusao TEXT
     );
+    """, """DROP TABLE IF EXISTS despesas;
+        CREATE TABLE despesas (
+        id_despesas SERIAL PRIMARY KEY,
+        data TEXT,
+        tipo_despesa TEXT,
+        descricao TEXT,
+        valor TEXT,
+        nome_responsavel TEXT,
+        arquivo TEXT,
+        data_exclusao TEXT
+    );
     """
 ]
 

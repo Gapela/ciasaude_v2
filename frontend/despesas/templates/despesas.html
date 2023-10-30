@@ -1,0 +1,26 @@
+{% extends "navbar.html" %} {% block content %}
+
+<link rel="stylesheet" href="despesas/static/css/despesas.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+/>
+
+<div class="container-despesas">
+  <div class="title">Módulo de Despesas</div>
+  <div class="table-content">
+    <table id="despesas" class="display" style="width: 100%"></table>
+  </div>
+
+  <div class="table-actions">
+    <a class="button-table-action" href="/despesas-novo">Novo</a
+    ><a class="button-table-action" href="/home">Voltar</a>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script src="despesas/static/js/despesas.js"></script>
+
+{% endblock %}
