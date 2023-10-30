@@ -1,8 +1,10 @@
-function get_content() {
+function get_paciente_edit() {
+  variavel = window.location.search;
+  id_paciente = variavel.split("=")[1];
   const inputs = document.querySelectorAll("input");
 
-  form = window.get_all_input_content_formdata(inputs, "profissional");
-
+  form = window.get_all_input_content_formdata(inputs);
+  form.append("id_paciente", id_paciente);
   form.append("observacao", document.getElementById("observacao").value);
   form.append("cid", document.getElementById("cid").value);
   //percorra cada select e pegue o valor selecionado usando o id como chave do json
@@ -11,7 +13,7 @@ function get_content() {
     form.append(selects[i].id, selects[i].value);
   }
 
-  res = window.new_send_file(form, "paciente-cadastro", "/paciente");
+  res = window.new_send_file(form, "paciente-editar", "/paciente");
   console.log(res);
   return form;
 }

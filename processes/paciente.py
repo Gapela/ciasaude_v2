@@ -58,7 +58,14 @@ def rotas_paciente(app):
     @cross_origin()
     def paciente_editar():
         try:
-            data = request.get_json()
+            file = request.files['file']
+            folder = 'paciente'
+            caminho = f'storage/{folder}/' + file.filename
+            file.save(caminho)
+            data = request.form.to_dict()
+            data['arquivo'] = caminho
+        
+            print(data)
             return editar_paciente(data=data)
         except Exception as e:
             return {'status':'error', 'data':str(e)}
@@ -133,7 +140,7 @@ def excluir_paciente(data):
 
 
 def editar_paciente(data):
-    id = data['id']
+    id = data['id_paciente']
     df = json_to_df(js=data)
     query = df_to_update_query(df=df, table_name='paciente', id=id)
     res = execute_query_psycopg2(query=query)
