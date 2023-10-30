@@ -7,7 +7,7 @@ from atendimento.atendimento import atendimento_bp
 from login.login import login_bp
 from navbar.navbar import navbar_bp
 from page.page import page_bp
-
+from despesas.despesas import despesas_bp
 
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ app.register_blueprint(atendimento_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(navbar_bp)
 app.register_blueprint(page_bp)
-
+app.register_blueprint(despesas_bp)
 
 if __name__ == '__main__':
     app.run(debug=True, port=8001)
