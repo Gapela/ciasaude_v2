@@ -68,10 +68,6 @@ $(document).ready(function () {
   get_profissional();
 });
 
-function editar_profissional(id_profissional) {
-  alert("Editar profissional: " + id_profissional);
-}
-
 function excluir_profissional(id_profissional) {
   //acionar a api para excluir o profissional
   url = window.url_api + "profissional-excluir";
@@ -86,4 +82,8 @@ function excluir_profissional(id_profissional) {
       alert("Erro: " + data.status);
     }
   });
+}
+
+function editar_profissional(id_profissional) {
+  window.location.href = "profissional-editar?id_profissional=" + id_profissional;
 }

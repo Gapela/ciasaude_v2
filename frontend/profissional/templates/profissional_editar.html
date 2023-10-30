@@ -1,0 +1,203 @@
+{% extends "navbar.html" %} {% block content %}
+
+<link rel="stylesheet" href="profissional/static/css/profissional_novo.css" />
+
+<div class="container-profissional-novo">
+  <div class="title">Módulo de Profissionais - Editar</div>
+
+  <div class="form-content">
+    <div class="nome-endereco">
+      <div class="form-input">
+        <label for="usuario">Nome</label>
+        <input
+          type="text"
+          placeholder="Insira o nome completo"
+          autofocus="true"
+          id="nome"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Endereço</label>
+        <input
+          type="text"
+          placeholder="Insira seu endereço completo"
+          autofocus="true"
+          id="endereco"
+        />
+      </div>
+    </div>
+
+    <div class="three-items">
+      <div class="form-input">
+        <label for="usuario">RG</label>
+        <input
+          type="text"
+          placeholder="XX.XXX.XXX-X"
+          autofocus="true"
+          id="rg"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">CPF</label>
+        <input
+          type="text"
+          placeholder="XXX.XXX.XXX-XX"
+          autofocus="true"
+          id="cpf"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Telefone</label>
+        <input
+          type="text"
+          placeholder="(DDD) XXXXX-XXXX"
+          autofocus="true"
+          id="telefone"
+        />
+      </div>
+    </div>
+
+    <div class="three-items">
+      <div class="form-input">
+        <label for="usuario">Especialidade</label>
+        <select name="especialidade" id="especialidade" class="select">
+          <!--crie uma opção padrao-->
+          <option value="sem_especialidade">Sem Especialidade</option>
+          <option value="psicologia">Psicologia</option>
+          <option value="fonoaudiologia">Fonoaudiologia</option>
+          <option value="massoterapia">Massoterapia</option>
+          <option value="exames_audiologicos">Exames Audiológicos</option>
+          <option value="psicopedagogia">Psicopedagogia</option>
+          <option value="nutricao">Nutrição</option>
+          <option value="fisioterapia_pediatrica">
+            Fisioterapia Pediatrica
+          </option>
+          <option value="fisioterapia_neurologica">
+            Fisioterapia neurológica
+          </option>
+          <option value="fisioterapia_geral">Fisioterapia Geral</option>
+          <option value="estimulacao_musical">Estimulação musical</option>
+          <option value="psicomotricidade">Psicomotricidade</option>
+          <option value="terapia_ocupacional">Terapia Ocupacional</option>
+          <option value="avaliação_neuropsicologica">
+            Avaliação Neuropsicológica
+          </option>
+          <option value="estetica_avancada">Estética Avançada</option>
+          <option value="psiquiatria_da_infancia_e_adolescencia">
+            Psiquiatria da infância e adolescência
+          </option>
+        </select>
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Obs. Especialização</label>
+        <textarea
+          type="text-area"
+          placeholder="Insira a observação"
+          autofocus="true"
+          id="obs_especializacao"
+        ></textarea>
+      </div>
+
+      <div class="form-input">
+        <label for="crm">CRM</label>
+        <input
+          type="text"
+          placeholder="Insira o CRM"
+          autofocus="true"
+          id="crm"
+        />
+      </div>
+    </div>
+
+    <div class="three-items">
+      <div class="form-input">
+        <label for="usuario">Forma de pagamento</label>
+        <select name="pagamento" id="pagamento" class="select">
+          <option value="sem_pagamento">Sem forma de pagamento</option>
+          <option value="pagamento_1">pagamento 1</option>
+          <option value="pagamento_2">pagamento2</option>
+        </select>
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Empresa</label>
+        <select name="empresa" id="empresa" class="select">
+          <!--crie opções Amil, bradesco, unimed, gamasaude e outros-->
+          <option value="sem_empresa">Sem empresa</option>
+          <option value="amil">Amil</option>
+          <option value="bradesco">Bradesco</option>
+          <option value="unimed">Unimed</option>
+          <option value="gamasaude">Gama Saúde</option>
+          <option value="outros">Outros</option>
+        </select>
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Plano</label>
+        <select name="plano" id="plano" class="select">
+          <option value="sem_plano">Sem plano</option>
+          <option value="plano_1">plano 1</option>
+          <option value="plano_2">plano 2</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="four-items">
+      <div class="form-input">
+        <label for="usuario">PIX</label>
+        <input
+          type="text"
+          placeholder="Insira a chave PIX"
+          autofocus="true"
+          id="pix"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Banco</label>
+        <input
+          type="text"
+          placeholder="Insira o número de série banco"
+          autofocus="true"
+          id="banco"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Agencia</label>
+        <input
+          type="text"
+          placeholder="Insira a agência bancária"
+          autofocus="true"
+          id="agencia"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Conta</label>
+        <input
+          type="text"
+          placeholder="Insira a conta bancária"
+          autofocus="true"
+          id="conta"
+        />
+      </div>
+    </div>
+
+    <div class="upload">
+      <input type="file" id="arquivo" name="filename" />
+    </div>
+
+    <div class="actions">
+      <a class="button-table-action" onclick="get_content()">Salvar</a
+      ><a class="button-table-action" href="/profissional">Voltar</a>
+    </div>
+  </div>
+
+  <script src="profissional/static/js/profissional_novo.js"></script>
+  {% endblock %}
+</div>

@@ -8,11 +8,10 @@ profissional_bp = Blueprint("profissional", __name__, template_folder="templates
 def profissional():
     return render_template('profissional.html')
 
-
-@profissional_bp.route('/profissional/<int:profissional_id>')
-def profissional_detail(profissional_id):
-    return f'Página do profissional {profissional_id}'
-
 @profissional_bp.route('/profissional-novo')
 def profissional_novo():
     return render_template('profissional_novo.html')
+
+@profissional_bp.route('/profissional-editar')
+def profissional_detail():
+    return render_template('profissional_editar.html')
