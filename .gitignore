@@ -32,3 +32,7 @@ htmlcov/
 *.ipr
 *.iws
 .idea_modules/
+
+storage/*
+
+config/config.json
