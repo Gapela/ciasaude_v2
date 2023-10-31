@@ -55,7 +55,13 @@ def rotas_profissional(app):
     @cross_origin()
     def profissional_editar():
         try:
-            data = request.get_json()
+            file = request.files['file']
+            folder = 'profissional'
+            caminho = f'storage/{folder}/' + file.filename
+            file.save(caminho)
+            data = request.form.to_dict()
+            data['arquivo'] = caminho
+            print(data)
             return editar_profissional(data=data)
         except Exception as e:
             return {'status':'error', 'data':str(e)}
@@ -75,7 +81,7 @@ def get_df_to_json(filter=None, data=''):
                     FROM 
                         public.profissional where data_exclusao is null;"""
     else:
-        id = data['id']
+        id = data['id_profissional']
         query = f"""SELECT
                         id_profissional, nome, endereco,
                         rg, cpf, telefone,
@@ -108,7 +114,7 @@ def excluir_profissional(data):
     return res    
 
 def editar_profissional(data):
-    id = data['id']
+    id = data['id_profissional']
     df = json_to_df(js=data)
     query = df_to_update_query(df=df, table_name='profissional', id=id)
     res = execute_query_psycopg2(query=query)
