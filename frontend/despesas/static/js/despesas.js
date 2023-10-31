@@ -52,10 +52,10 @@ function monta_data_table(data) {
         data: null,
         render: function (data, type, row) {
           return (
-            "<button class='btn btn-primary' onclick='editar_despesas(" +
+            "<button class='btn-green' onclick='editar_despesas(" +
             data.id_despesas +
             ")'>Editar</button>" +
-            "<button class='btn btn-danger' onclick='excluir_despesas(" +
+            "<button class='btn-red' onclick='excluir_despesas(" +
             data.id_despesas +
             ")'>Excluir</button>"
           );

@@ -3,13 +3,19 @@
 <link rel="stylesheet" href="atendimento/static/css/atendimento.css" />
 <link
   rel="stylesheet"
-  href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
 />
 
 <div class="container-atendimento">
   <div class="title">Módulo de Tratamento</div>
   <div class="table-content">
-    <table id="atendimento" class="row-border" style="width: 100%"></table>
+    <div class="table">
+      <table
+        id="atendimento"
+        class="hover row-border"
+        style="width: 100%"
+      ></table>
+    </div>
   </div>
 
   <div class="table-actions">
@@ -20,7 +26,5 @@
 
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/dataTables.tailwindcss.min.js"></script>
-<script src="https://cdn.tailwindcss.com/"></script>
 <script src="atendimento/static/js/atendimento.js"></script>
 {% endblock %}

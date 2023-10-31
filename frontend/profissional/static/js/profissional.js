@@ -48,10 +48,10 @@ function monta_data_table(data) {
         data: null,
         render: function (data, type, row) {
           return (
-            "<button class='btn btn-primary' onclick='editar_profissional(" +
+            "<button class='btn-green' onclick='editar_profissional(" +
             data.id_profissional +
             ")'>Editar</button>" +
-            "<button class='btn btn-danger' onclick='excluir_profissional(" +
+            "<button class='btn-red' onclick='excluir_profissional(" +
             data.id_profissional +
             ")'>Excluir</button>"
           );
@@ -85,5 +85,6 @@ function excluir_profissional(id_profissional) {
 }
 
 function editar_profissional(id_profissional) {
-  window.location.href = "profissional-editar?id_profissional=" + id_profissional;
+  window.location.href =
+    "profissional-editar?id_profissional=" + id_profissional;
 }
