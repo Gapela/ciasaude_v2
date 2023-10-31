@@ -25,11 +25,11 @@ function monta_data_table(data) {
     // cria um novo objeto com os dados que serão exibidos na tabela
 
     const despesasData = {
-      nome: despesas.nome,
-      telefone: despesas.telefone,
-      email: despesas.email,
-      data_nascimento: despesas.data_nascimento,
-      forma_pagamento: despesas.pagamento,
+      data: despesas.data,
+      tipo_despesa: despesas.tipo_despesa,
+      descricao: despesas.descricao,
+      valor: despesas.valor,
+      nome_responsavel: despesas.nome_responsavel,
       id_despesas: despesas.id_despesas,
     };
 
@@ -41,11 +41,11 @@ function monta_data_table(data) {
   $("#despesas").DataTable({
     data: dataSet,
     columns: [
-      { title: "Nome", data: "nome" },
-      { title: "Telefone", data: "telefone" },
-      { title: "E-mail", data: "email" },
-      { title: "Data de Nascimento", data: "data_nascimento" },
-      { title: "Forma de Pagamento", data: "forma_pagamento" },
+      { title: "Data", data: "data" },
+      { title: "Tipo de Despesa", data: "tipo_despesa" },
+      { title: "Descrição", data: "descricao" },
+      { title: "Valor", data: "valor" },
+      { title: "Nome do Responsável", data: "nome_responsavel" },
       //colocar um botão para editar e excluir
       {
         title: "Ações",

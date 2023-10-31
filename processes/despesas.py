@@ -48,7 +48,9 @@ def rotas_despesas(app):
     @cross_origin()
     def despesas_consulta_detalhes():
         try:
+            
             data = request.get_json()
+            print(data)
             return {'status':'ok', 'data':get_df_to_json(filter=True, data=data)}
         except Exception as e:
             return {'status':'error', 'data':str(e)}
@@ -58,7 +60,14 @@ def rotas_despesas(app):
     @cross_origin()
     def despesas_editar():
         try:
-            data = request.get_json()
+            file = request.files['file']
+            folder = 'despesas'
+            caminho = f'storage/{folder}/' + file.filename
+            file.save(caminho)
+            data = request.form.to_dict()
+            data['arquivo'] = caminho
+            
+            print(data)
             return editar_despesas(data=data)
         except Exception as e:
             return {'status':'error', 'data':str(e)}
@@ -96,7 +105,7 @@ def excluir_despesas(data):
 
 
 def editar_despesas(data):
-    id = data['id']
+    id = data['id_despesas']
     df = json_to_df(js=data)
     query = df_to_update_query(df=df, table_name='despesas', id=id)
     res = execute_query_psycopg2(query=query)
