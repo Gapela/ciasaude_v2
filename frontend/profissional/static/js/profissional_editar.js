@@ -43,13 +43,14 @@ function load_profissional() {
     document.getElementById("endereco").value = data[0].endereco;
     document.getElementById("obs_especializacao").value =
       data[0].obs_especializacao;
-    // empresa, plano, pix, banco, agencia, conta
+    // empresa, plano, pix, banco, agencia, conta, pagamento
     document.getElementById("empresa").value = data[0].empresa;
     document.getElementById("plano").value = data[0].plano;
     document.getElementById("pix").value = data[0].pix;
     document.getElementById("banco").value = data[0].banco;
     document.getElementById("agencia").value = data[0].agencia;
     document.getElementById("conta").value = data[0].conta;
+    document.getElementById("pagamento").value = data[0].pagamento;
 
     console.log(data[0]);
   });
