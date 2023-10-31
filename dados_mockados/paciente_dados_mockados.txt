@@ -1,0 +1,70 @@
+site: https://json-generator.com/
+
+codigo para geração de dados:
+
+############################################################################
+
+['{{repeat(1)}}',
+ {
+   nome: '{{firstName()}} {{surname()}}',
+   endereco: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+    cep: function () {
+    var minm_1 = 10000;
+    var maxm_1 = 99999;
+    var parte_1 = Math.floor(Math.random() * (maxm_1 - minm_1 + 1)) + minm_1;
+  	
+	var minm_2 = 100;
+    var maxm_2 = 999;
+    var parte_2 = Math.floor(Math.random() * (maxm_2 - minm_2 + 1)) + minm_2;
+      
+    var retorno = parte_1 + '-' + parte_2;
+    return retorno;
+    },
+   rg: function generateRG() {
+    var part1 = Math.floor(Math.random() * 90) + 10; // Generates a random number between 10 and 99
+    var part2 = Math.floor(Math.random() * 900) + 100; // Generates a random number between 100 and 999
+    var part3 = Math.floor(Math.random() * 900) + 100; // Generates a random number between 100 and 999
+    var part4 = Math.floor(Math.random() * 10); // Generates a random number between 0 and 9
+
+    return part1 + "." + part2 + "." + part3 + "-" + part4;
+},
+    cpf: function generateCPF() {
+    var part1 = Math.floor(Math.random() * 900) + 100; // Generates a random number between 100 and 999
+    var part2 = Math.floor(Math.random() * 900) + 100; // Generates a random number between 100 and 999
+    var part3 = Math.floor(Math.random() * 900) + 100; // Generates a random number between 100 and 999
+    var part4 = Math.floor(Math.random() * 90) + 10; // Generates a random number between 10 and 99
+
+    return part1 + "." + part2 + "." + part3 + "-" + part4;
+},
+    telefone: '{{phone()}}',
+    email: '{{email([random])}}',
+    data_nascimento: function generateBirthdate() {
+    var start = new Date(1920, 0, 1); // Start date (January 1, 1920)
+    var end = new Date(2023, 0, 1); // End date (January 1, 2010)
+    var birthdate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+
+    var day = ("0" + birthdate.getDate()).slice(-2);
+    var month = ("0" + (birthdate.getMonth() + 1)).slice(-2);
+    var year = birthdate.getFullYear();
+
+    return day + "/" + month + "/" + year; // Returns the date in the format "dd/mm/yyyy"
+},
+   responsavel: '{{firstName()}} {{surname()}}',
+   medico_solicitante: '{{firstName()}} {{surname()}}',
+   crm:  function () {
+    var minm = 100000;
+    var maxm = 999999;
+    return Math.floor(Math.random() * (maxm - minm + 1)) + minm;},
+   ocupacao: '{{random("Ortopedista", "Pediatra", "Cardiologista")}}',
+   cid: '{{lorem([1])}}',
+    observacao: '{{lorem([1])}}',
+   pagamento: '{{random("Plano de saúde", "Particular")}}',
+    empresa: '{{random("Amil", "Bradesco", "Unimed", "Gama Saúde", "Outros")}}',
+     numero_carteirinha: function () {
+    var minm = 10000000;
+    var maxm = 99999999;
+    return Math.floor(Math
+    .random() * (maxm - minm + 1)) + minm;},
+    plano:'{{random("Bradesco plus", "Amil gold", "Unimed silver", "")}}'
+}
+]
