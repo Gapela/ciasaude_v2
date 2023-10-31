@@ -39,8 +39,21 @@ function load_paciente() {
     document.getElementById("cep").value = data[0].cep;
     //selecionar o index de um select com a informação vindo do data[0].pagamento
     document.getElementById("pagamento").value = data[0].pagamento;
-
+    document.getElementById("endereco").value = data[0].endereco;
     document.getElementById("empresa").value = data[0].empresa;
+    // fazer o mesmo para rg, crm, ocupacao, medico_solicitante, numero_carteirinha, plano
+    document.getElementById("rg").value = data[0].rg;
+    document.getElementById("crm").value = data[0].crm;
+    document.getElementById("ocupacao").value = data[0].ocupacao;
+    document.getElementById("medico_solicitante").value =
+      data[0].medico_solicitante;
+    document.getElementById("numero_carteirinha").value =
+      data[0].numero_carteirinha;
+    document.getElementById("plano").value = data[0].plano;
+    // cpf, cpf_responsavel, responsavel
+    document.getElementById("cpf").value = data[0].cpf;
+    document.getElementById("cpf_responsavel").value = data[0].cpf_responsavel;
+    document.getElementById("responsavel").value = data[0].responsavel;
     console.log(data[0]);
   });
 }
