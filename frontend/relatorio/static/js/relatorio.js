@@ -1,1 +1,3 @@
-function generate_report() {}
+function generate_report() {
+  teste;
+}
