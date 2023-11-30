@@ -1,0 +1,65 @@
+{% extends "navbar.html" %} {% block content %}
+
+<link rel="stylesheet" href="relatorio/static/css/relatorio.css" />
+
+<div class="container-relatorio">
+  <div class="title">Módulo de Relatórios</div>
+  <div class="relatorio">
+    <div class="modulo">
+      <div class="form-input">
+        <label for="usuario">Módulo</label>
+        <select name="modulo" id="modulo">
+          <option value="1">Pacientes</option>
+          <option value="2">Tratamentos</option>
+          <option value="3">Profissionais</option>
+          <option value="4">Financeiro</option>
+        </select>
+      </div>
+      <div class="form-button-modulo">
+        <button class="button-add" id="gerar_relatorio">Gerar Relatório</button>
+      </div>
+    </div>
+    <div class="parametros">
+      <div class="form-input">
+        <label for="usuario">Campo do Filtro</label>
+        <select name="modulo" id="modulo">
+          <option value="1">Sem filtro</option>
+          <option value="2">Forma de Pagamento</option>
+          <option value="3">Empresa</option>
+          <option value="4">Data de Nascimento</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <label for="usuario">Tipo de Filtro</label>
+        <select name="modulo" id="modulo">
+          <option value="0">Sem filtro</option>
+          <option value=">">Maior que</option>
+          <option value="Menor que">Menor que</option>
+          <option value="=">Igual a</option>
+          <option value="%">Contém</option>
+          <option value=">=">Maior ou igual</option>
+          <option value="Menor ou igual">Menor ou igual</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <label for="usuario">Parâmetro</label>
+        <input
+          type="text"
+          name="parametro"
+          id="parametro"
+          placeholder="Digite seu filtro"
+        />
+      </div>
+
+      <div class="form-button">
+        <button class="button-add" id="adicionar">Adicionar</button>
+      </div>
+    </div>
+
+    <div>Filtros Aplicados</div>
+  </div>
+
+  <script src="relatorio/static/js/relatorio.js"></script>
+
+  {% endblock %}
+</div>

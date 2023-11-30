@@ -164,3 +164,21 @@ textarea {
   gap: 30px;
   justify-content: center;
 }
+
+.button-download {
+  width: 100px;
+  height: 40px;
+  background-color: #a9cf3c;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 600;
+  border: none !important;
+  transition: all linear 160ms;
+  cursor: pointer;
+  margin: 0 !important;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -51,7 +51,9 @@ function load_profissional() {
     document.getElementById("agencia").value = data[0].agencia;
     document.getElementById("conta").value = data[0].conta;
     document.getElementById("pagamento").value = data[0].pagamento;
-
+    file_path = data[0].arquivo;
+    // set file_path como variavel global
+    window.file_path = file_path;
     console.log(data[0]);
   });
 }

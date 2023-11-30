@@ -6,7 +6,7 @@ relatorio_bp = Blueprint("relatorio", __name__, template_folder="templates",
 
 @relatorio_bp.route('/relatorio')
 def relatorio():
-    return 'Página do relatorio'
+    return render_template('relatorio.html')
 
 
 @relatorio_bp.route('/relatorio/<int:relatorio_id>')

@@ -152,6 +152,43 @@ function new_send_file(formData, endpoint, redirect) {
     });
 }
 
+function download_anexo() {
+  variavel = window.location.search;
+  id_paciente = variavel.split("=")[1];
+  url = window.url_api + "download-file/" + window.file_path;
+  //formdata com o id do paciente
+  token = sessionStorage.getItem("token");
+  method = "POST";
+  window.request_backend(url, body, token, method).then((data) => {
+    //decode data de base64 para blob
+    let encoded_string = data.data; // Sua string codificada em base64
+    let binary_string = window.atob(encoded_string);
+    let len = binary_string.length;
+    let bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binary_string.charCodeAt(i);
+    }
+    // Cria um novo Blob com os dados retornados
+    var blob = new Blob([bytes], { type: "application/octet-stream" });
+
+    // Cria uma URL para o Blob
+    var url = URL.createObjectURL(blob);
+
+    // Cria um link temporário
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "filename." + data.extensao; // Substitua 'filename.ext' pelo nome do arquivo que você deseja
+
+    // Adiciona o link ao corpo do documento e simula um clique nele
+    document.body.appendChild(a);
+    a.click();
+
+    // Remove o link do corpo do documento
+    document.body.removeChild(a);
+  });
+}
+
+window.download_anexo = download_anexo;
 window.request_backend = request_backend;
 window.insert_database = insert_database;
 window.get_all_input_content_js = get_all_input_content_js;
