@@ -117,7 +117,7 @@ def get_df_to_json(filter=None, data=''):
                         pagamento, 
                         empresa, 
                         numero_carteirinha, 
-                        plano
+                        plano, arquivo
                         FROM public.paciente where id_paciente={id};"""
     df = execute_query_df(query)
     js = df_to_json(df)

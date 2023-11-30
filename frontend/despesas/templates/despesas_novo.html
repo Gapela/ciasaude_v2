@@ -3,31 +3,49 @@
 <link rel="stylesheet" href="despesas/static/css/despesas_novo.css" />
 
 <div class="container-despesas-novo">
-  <div class="title">Módulo de Despesas - Cadastro</div>
+  <div class="title">Módulo Financeiro - Cadastro</div>
   <div class="form-content">
-    
     <div class="nome-endereco">
-    <div class="form-input">
-      <label for="usuario">Tipo de Despesa</label>
-      <input type="text" placeholder="Insira a descrição da despesa" autofocus="true" id="tipo_despesa" />
+      <div class="form-input">
+        <label for="usuario">Tipo de Despesa</label>
+        <input
+          type="text"
+          placeholder="Insira a descrição da despesa"
+          autofocus="true"
+          id="tipo_despesa"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Nome do Responsável</label>
+        <input
+          type="text"
+          placeholder="Insira o nome do responsável da despesa"
+          autofocus="true"
+          id="nome_responsavel"
+        />
+      </div>
     </div>
 
-    <div class="form-input">
-      <label for="usuario">Nome do Responsável</label>
-      <input type="text" placeholder="Insira o nome do responsável da despesa" autofocus="true" id="nome_responsavel" />
-    </div>
-  </div>
-  
     <div class="two-center">
       <div class="form-input">
         <label for="usuario">Data da Despesa</label>
-        <input type="text" placeholder="XX/XX/XXXX" autofocus="true" id="data" />
+        <input
+          type="text"
+          placeholder="XX/XX/XXXX"
+          autofocus="true"
+          id="data"
+        />
       </div>
 
-    
       <div class="form-input">
         <label for="usuario">Valor</label>
-        <input type="text" placeholder="R$ XXX,XX" autofocus="true" id="valor" />
+        <input
+          type="text"
+          placeholder="R$ XXX,XX"
+          autofocus="true"
+          id="valor"
+        />
       </div>
     </div>
 
@@ -36,8 +54,8 @@
     </div>
 
     <div class="actions">
-      <a class="button-table-action" onclick="get_content()">Avançar</a><a class="button-table-action"
-        href="/despesas">Voltar</a>
+      <a class="button-table-action" onclick="get_content()">Avançar</a
+      ><a class="button-table-action" href="/despesas">Voltar</a>
     </div>
   </div>
 

@@ -5,14 +5,14 @@ function verificarLogin() {
   }
 }
 
-function request_backend(url, body, token) {
+function request_backend(url, body, token, method = "POST") {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", "Bearer " + token);
   var raw = JSON.stringify(body);
 
   var requestOptions = {
-    method: "POST",
+    method: method,
     headers: myHeaders,
     body: raw,
     redirect: "follow",
