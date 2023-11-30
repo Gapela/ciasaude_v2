@@ -9,20 +9,26 @@
       <div class="form-input">
         <label for="usuario">Módulo</label>
         <select name="modulo" id="modulo">
-          <option value="1">Pacientes</option>
-          <option value="2">Tratamentos</option>
-          <option value="3">Profissionais</option>
-          <option value="4">Financeiro</option>
+          <option value="paciente">Pacientes</option>
+          <option value="atendimento">Tratamentos</option>
+          <option value="profissional">Profissionais</option>
+          <option value="despesas">Financeiro</option>
         </select>
       </div>
       <div class="form-button-modulo">
-        <button class="button-add" id="gerar_relatorio">Gerar Relatório</button>
+        <button
+          class="button-add"
+          id="gerar_relatorio"
+          onclick="generate_report()"
+        >
+          Gerar Relatório
+        </button>
       </div>
     </div>
     <div class="parametros">
       <div class="form-input">
         <label for="usuario">Campo do Filtro</label>
-        <select name="modulo" id="modulo">
+        <select name="modulo" id="campo_filtro">
           <option value="1">Sem filtro</option>
           <option value="2">Forma de Pagamento</option>
           <option value="3">Empresa</option>
@@ -31,7 +37,7 @@
       </div>
       <div class="form-input">
         <label for="usuario">Tipo de Filtro</label>
-        <select name="modulo" id="modulo">
+        <select name="modulo" id="tipo_filtro">
           <option value="0">Sem filtro</option>
           <option value=">">Maior que</option>
           <option value="Menor que">Menor que</option>
@@ -46,17 +52,19 @@
         <input
           type="text"
           name="parametro"
-          id="parametro"
+          id="parametro_filtro"
           placeholder="Digite seu filtro"
         />
       </div>
 
       <div class="form-button">
-        <button class="button-add" id="adicionar">Adicionar</button>
+        <button class="button-add" id="adicionar" onclick="adicionar_filtro()">
+          Adicionar
+        </button>
       </div>
     </div>
 
-    <div>Filtros Aplicados</div>
+    <div class="filtros-aplicados" id="filtros-aplicados"></div>
   </div>
 
   <script src="relatorio/static/js/relatorio.js"></script>

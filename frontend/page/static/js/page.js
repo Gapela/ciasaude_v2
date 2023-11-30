@@ -23,6 +23,7 @@ function request_backend(url, body, token, method = "POST") {
       //cria uma condição para verificar se o status foi ok ou não nok
       {
         //retorna o json que veio da api
+        console.log(result);
         return result;
       }
     )
