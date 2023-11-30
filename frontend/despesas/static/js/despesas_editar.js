@@ -26,7 +26,9 @@ function load_despesas() {
     document.getElementById("valor").value = data[0].valor;
     document.getElementById("nome_responsavel").value =
       data[0].nome_responsavel;
-
+    file_path = data[0].arquivo;
+    // set file_path como variavel global
+    window.file_path = file_path;
     console.log(data[0]);
   });
 }

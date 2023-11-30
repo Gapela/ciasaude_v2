@@ -87,7 +87,7 @@ def get_df_to_json(filter=None, data=''):
                         rg, cpf, telefone,
                         especialidade, obs_especializacao, crm,
                         pagamento, empresa, plano,
-                        pix, banco, agencia, conta
+                        pix, banco, agencia, conta, arquivo
                     FROM 
                         public.profissional
                     WHERE
