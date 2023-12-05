@@ -42,7 +42,7 @@ function login() {
           window.location.href = "/home";
         } else {
           //exibe uma mensagem de erro
-          alert(result.message);
+          console.log(result.message);
         }
       }
     )

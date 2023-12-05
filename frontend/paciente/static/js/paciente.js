@@ -9,7 +9,7 @@ function get_paciente() {
       if (data.status == "ok") {
         monta_data_table(data.data);
       } else {
-        alert("Erro: " + data.status);
+        console.log("Erro: " + data.status);
       }
     })
     .catch((error) => {
@@ -83,7 +83,7 @@ function excluir_paciente(id_paciente) {
     if (data.status == "ok") {
       window.location.reload();
     } else {
-      alert("Erro: " + data.status);
+      console.log("Erro: " + data.status);
     }
   });
 }

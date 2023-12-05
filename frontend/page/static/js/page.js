@@ -23,7 +23,12 @@ function request_backend(url, body, token, method = "POST") {
       //cria uma condição para verificar se o status foi ok ou não nok
       {
         //retorna o json que veio da api
+
         console.log(result);
+        if (result.msg == "Token has expired") {
+          sessionStorage.removeItem("token");
+          window.location.href = "/login";
+        }
         return result;
       }
     )
@@ -43,7 +48,7 @@ function insert_database(json, endpoint, redirect) {
         //redirecionar para o link na variavel redirect
         window.location.href = redirect;
       } else {
-        alert("Erro: " + data.data);
+        console.log("Erro: " + data.data);
       }
     })
     .catch((error) => {

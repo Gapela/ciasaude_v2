@@ -9,7 +9,7 @@ function get_atendimento() {
       if (data.status == "ok") {
         monta_data_table(data.data);
       } else {
-        alert("Erro: " + data.status);
+        console.log("Erro: " + data.status);
       }
     })
     .catch((error) => {
@@ -87,7 +87,7 @@ function excluir_atendimento(id_atendimento) {
       if (data.status == "ok") {
         window.location.href = "/atendimento";
       } else {
-        alert("Erro: " + data.status);
+        console.log("Erro: " + data.status);
       }
     })
     .catch((error) => {

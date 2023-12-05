@@ -66,7 +66,7 @@ function get_paciente_profissional() {
           `;
         });
       } else {
-        alert("Erro: " + data.data);
+        console.log("Erro: " + data.data);
       }
     })
     .catch((error) => {

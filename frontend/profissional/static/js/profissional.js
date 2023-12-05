@@ -9,7 +9,7 @@ function get_profissional() {
       if (data.status == "ok") {
         monta_data_table(data.data);
       } else {
-        alert("Erro: " + data.status);
+        console.log("Erro: " + data.status);
       }
     })
     .catch((error) => {
@@ -79,7 +79,7 @@ function excluir_profissional(id_profissional) {
     if (data.status == "ok") {
       window.location.reload();
     } else {
-      alert("Erro: " + data.status);
+      console.log("Erro: " + data.status);
     }
   });
 }

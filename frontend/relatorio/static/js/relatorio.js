@@ -1,10 +1,10 @@
 function generate_report() {
   var module = document.getElementById("modulo").value;
   if (filtros_final.length == 0) {
-    alert("Gerando relatório sem filtros");
+    console.log("Gerando relatório sem filtros");
     download_report(module, []);
   } else {
-    alert("Relatório gerado com sucesso! Filtros: " + filtros_final);
+    console.log("Relatório gerado com sucesso! Filtros: " + filtros_final);
     download_report(module, filtros_final);
   }
 }
@@ -14,7 +14,7 @@ filtros_final = [];
 function adicionar_filtro() {
   var parametro_filtro = document.getElementById("parametro_filtro").value;
   if (parametro_filtro == "") {
-    alert("Preencha o campo de parâmetro do filtro");
+    console.log("Preencha o campo de parâmetro do filtro");
     return;
   }
 
