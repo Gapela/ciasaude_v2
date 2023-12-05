@@ -85,7 +85,19 @@ queries = [
         arquivo TEXT,
         data_exclusao TEXT
     );
-    """
+    """, """DROP TABLE IF EXISTS agenda;
+    CREATE TABLE agenda (
+    id SERIAL PRIMARY KEY,
+    id_paciente text,
+    especialidade text,
+    id_profissional text,
+    data_agenda text,
+    horario text,
+    forma_pagamento text,
+    plano text,
+    numero_carteirinha text,
+    observacao text,
+    data_exclusao text);"""
 ]
 
 for query in queries:

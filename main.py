@@ -6,6 +6,7 @@ from processes.profissional import rotas_profissional
 from processes.relatorio import rotas_relatorio
 from processes.upload_File import rotas_upload
 from processes.despesas import rotas_despesas
+from processes.agenda import rotas_agenda
 
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 from flask_cors import CORS, cross_origin
@@ -22,6 +23,7 @@ app = rotas_profissional(app)
 app = rotas_relatorio(app)
 app = rotas_upload(app)
 app = rotas_despesas(app)
+app = rotas_agenda(app)
 
 @app.route('/', methods=['POST'])
 def index():
