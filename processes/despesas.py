@@ -4,6 +4,7 @@ from libs.utils import *
 import json
 from flask_jwt_extended import jwt_required
 from flask_cors import CORS, cross_origin
+import random
 
 def rotas_despesas(app):
 
@@ -23,12 +24,20 @@ def rotas_despesas(app):
     @cross_origin()
     def despesas_cadastro():
         
-        file = request.files['file']
-        folder = 'despesas'
-        caminho = f'storage/{folder}/' + file.filename
-        file.save(caminho)
-        data = request.form.to_dict()
-        data['arquivo'] = caminho
+        try:
+                
+                file = request.files['file']
+                folder = 'despesas'
+                data = request.form.to_dict()
+                extensao = file.filename.split('.')[-1]
+                caminho = f'storage/{folder}/' + str(random.randrange(10000,10000000))+'.' + extensao 
+                file.save(caminho)
+                data['arquivo'] = caminho
+        except:
+                
+                data = request.form.to_dict()     
+                # remover do json a chave file
+                data.pop('file')
         
         print(data)
         res = insert_despesas(data=data)
@@ -60,13 +69,21 @@ def rotas_despesas(app):
     @cross_origin()
     def despesas_editar():
         try:
-            file = request.files['file']
-            folder = 'despesas'
-            caminho = f'storage/{folder}/' + file.filename
-            file.save(caminho)
-            data = request.form.to_dict()
-            data['arquivo'] = caminho
-            
+            try:
+
+                file = request.files['file']
+                folder = 'despesas'
+                data = request.form.to_dict()
+                extensao = file.filename.split('.')[-1]
+                caminho = f'storage/{folder}/' + data['id_despesas']+'.' + extensao 
+                file.save(caminho)
+                data['arquivo'] = caminho
+            except:
+                
+                data = request.form.to_dict()     
+                # remover do json a chave file
+                data.pop('file')
+
             print(data)
             return editar_despesas(data=data)
         except Exception as e:

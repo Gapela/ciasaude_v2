@@ -5,6 +5,7 @@ import json
 from flask_jwt_extended import jwt_required
 from flask_cors import CORS, cross_origin
 import base64
+import random
 
 def rotas_profissional(app):
 
@@ -19,12 +20,19 @@ def rotas_profissional(app):
     @jwt_required()
     @cross_origin()
     def profissional_cadastro():
-        file = request.files['file']
-        folder = 'profissional'
-        caminho = f'storage/{folder}/' + file.filename
-        file.save(caminho)
-        data = request.form.to_dict()
-        data['arquivo'] = caminho
+        try:
+                file = request.files['file']
+                folder = 'profissional'
+                data = request.form.to_dict()
+                extensao = file.filename.split('.')[-1]
+                caminho = f'storage/{folder}/' + str(random.randrange(10000,10000000))+'.' + extensao 
+                file.save(caminho)
+                data['arquivo'] = caminho
+        except:
+                
+                data = request.form.to_dict()     
+                # remover do json a chave file
+                data.pop('file')
         
         print(data)
         res = insert_profissional(data=data)
@@ -55,12 +63,20 @@ def rotas_profissional(app):
     @cross_origin()
     def profissional_editar():
         try:
-            file = request.files['file']
-            folder = 'profissional'
-            caminho = f'storage/{folder}/' + file.filename
-            file.save(caminho)
-            data = request.form.to_dict()
-            data['arquivo'] = caminho
+            try:
+
+                file = request.files['file']
+                folder = 'profissional'
+                data = request.form.to_dict()
+                extensao = file.filename.split('.')[-1]
+                caminho = f'storage/{folder}/' + data['id_profissional']+'.' + extensao 
+                file.save(caminho)
+                data['arquivo'] = caminho
+            except:
+                
+                data = request.form.to_dict()     
+                # remover do json a chave file
+                data.pop('file')
             print(data)
             return editar_profissional(data=data)
         except Exception as e:
