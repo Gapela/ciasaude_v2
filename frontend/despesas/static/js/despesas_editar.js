@@ -24,6 +24,7 @@ function load_despesas() {
     document.getElementById("data").value = data[0].data;
     document.getElementById("tipo_despesa").value = data[0].tipo_despesa;
     document.getElementById("valor").value = data[0].valor;
+    document.getElementById("descricao").value = data[0].descricao;
     document.getElementById("nome_responsavel").value =
       data[0].nome_responsavel;
     file_path = data[0].arquivo;

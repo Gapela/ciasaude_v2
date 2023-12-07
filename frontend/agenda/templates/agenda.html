@@ -1,10 +1,27 @@
 {% extends "navbar.html" %} {% block content %}
 
 <link rel="stylesheet" href="agenda/static/css/agenda.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+/>
 
 <div class="container-agenda">
-  <div class="title">Módulo de Agenda</div>
+  <div class="title">Módulo de Agendas</div>
+  <div class="table-content">
+    <div class="table">
+      <table id="agenda" class="hover row-border" style="width: 100%"></table>
+    </div>
+  </div>
+
+  <div class="table-actions">
+    <a class="button-table-action" href="/agenda-novo">Novo</a
+    ><a class="button-table-action" href="/home">Voltar</a>
+  </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 <script src="agenda/static/js/agenda.js"></script>
 
