@@ -31,7 +31,7 @@ function monta_data_table(data) {
       especialidade: agenda.especialidade,
       profissional: agenda.profissional,
       forma_pagamento: agenda.forma_pagamento,
-      id_agenda: agenda.id,
+      id_agenda: agenda.id_agenda,
     };
 
     // adiciona o novo objeto ao array dataSet

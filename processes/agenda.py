@@ -73,7 +73,7 @@ def rotas_agenda(app):
 
 def get_df_to_json(filter=None, data=''):
     if filter==None:   
-        query = """select id, pac.nome as paciente, agenda.especialidade, prof.nome as profissional, agenda.data_agenda, agenda.horario, agenda.forma_pagamento, agenda.plano,
+        query = """select id_agenda, pac.nome as paciente, agenda.especialidade, prof.nome as profissional, agenda.data_agenda, agenda.horario, agenda.forma_pagamento, agenda.plano,
         agenda.numero_carteirinha, agenda.observacao
         from agenda as agenda
         left join paciente pac
@@ -93,7 +93,7 @@ def get_df_to_json(filter=None, data=''):
         return js
     else:
         id = data['id_agenda']
-        query = f"""select id, agenda.id_paciente, agenda.especialidade, agenda.id_profissional, agenda.data_agenda, agenda.horario, agenda.forma_pagamento, agenda.plano,
+        query = f"""select id_agenda, agenda.id_paciente, agenda.especialidade, agenda.id_profissional, agenda.data_agenda, agenda.horario, agenda.forma_pagamento, agenda.plano,
         agenda.numero_carteirinha, agenda.observacao
         from agenda as agenda
         left join paciente pac

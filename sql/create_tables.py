@@ -87,7 +87,7 @@ queries = [
     );
     """, """DROP TABLE IF EXISTS agenda;
     CREATE TABLE agenda (
-    id SERIAL PRIMARY KEY,
+    id_agenda SERIAL PRIMARY KEY,
     id_paciente text,
     especialidade text,
     id_profissional text,
