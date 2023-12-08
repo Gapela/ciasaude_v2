@@ -9,6 +9,11 @@ def agenda():
     return render_template('agenda.html')
 
 
-@agenda_bp.route('/agenda/<int:agenda_id>')
-def agenda_detail(agenda_id):
-    return f'Página do agenda {agenda_id}'
+@agenda_bp.route('/agenda-novo')
+def agenda_novo():
+    return render_template('agenda_novo.html')
+
+
+@agenda_bp.route('/agenda-editar')
+def agenda_detail():
+    return render_template('agenda_editar.html')

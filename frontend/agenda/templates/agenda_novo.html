@@ -1,0 +1,61 @@
+{% extends "navbar.html" %} {% block content %}
+
+<link rel="stylesheet" href="agenda/static/css/agenda_novo.css" />
+
+<div class="container-agenda-novo">
+  <div class="title">Módulo Agenda - Cadastro</div>
+  <div class="form-content">
+    <div class="two-center">
+      <div class="form-input">
+        <label for="usuario">Data</label>
+        <input
+          type="date"
+          placeholder="Insira a descrição da despesa"
+          autofocus="true"
+          id="tipo_despesa"
+        />
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Horario</label>
+        <input
+          type="time"
+          placeholder="Insira a descrição da despesa"
+          autofocus="true"
+          id="descricao"
+        />
+      </div>
+    </div>
+
+    <div class="two-center">
+      <div class="form-input">
+        <label for="usuario">Profissional</label>
+        <select id="profissional"></select>
+      </div>
+
+      <div class="form-input">
+        <label for="usuario">Paciente</label>
+        <select id="paciente"></select>
+      </div>
+    </div>
+    <div class="one-line">
+      <div class="form-input">
+        <label for="usuario">Observacao</label>
+        <input
+          type="text"
+          placeholder="Descreva a observação"
+          autofocus="true"
+          id="valor"
+        />
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="button-table-action" onclick="get_content()">Avançar</a
+      ><a class="button-table-action" href="/agenda">Voltar</a>
+    </div>
+  </div>
+
+  <script src="agenda/static/js/agenda_novo.js"></script>
+  {% endblock %}
+</div>
