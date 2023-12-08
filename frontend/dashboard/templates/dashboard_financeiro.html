@@ -1,46 +1,42 @@
 {% extends "navbar.html" %} {% block content %}
 
-<link rel="stylesheet" href="dashboard/static/css/dashboard_paciente.css" />
+<link rel="stylesheet" href="dashboard/static/css/dashboard_financeiro.css" />
 
 <div class="container-dashboard">
   <div class="kpi">
     <div class="kpi-item">
-      <div class="kpi-item-title">Total de pacientes cadastrados</div>
+      <div class="kpi-item-title">Total de entradas</div>
       <div class="kpi-item-value">100</div>
     </div>
     <div class="kpi-item">
-      <div class="kpi-item-title">Total de pacientes ativos</div>
+      <div class="kpi-item-title">Total de saídas</div>
       <div class="kpi-item-value">50</div>
     </div>
     <div class="kpi-item">
-      <div class="kpi-item-title">Total de pacientes inativos</div>
+      <div class="kpi-item-title">Cálculo Geral</div>
       <div class="kpi-item-value">50</div>
     </div>
   </div>
 
   <div class="graph-first-line">
     <div class="graph-background">
-      <label>Forma de Pagamento</label>
-      <canvas id="pizza"></canvas>
+      <label>Entradas por período</label>
+      <canvas id="entrada_periodo"></canvas>
     </div>
     <div class="graph-background">
-      <label>Pacientes por diagnóstico</label><canvas id="bar"></canvas>
+      <label>Saidas por período</label><canvas id="saida_periodo"></canvas>
     </div>
   </div>
 
   <div class="graph-second-line">
     <div class="graph-background">
-      <label>Pacientes por profissional</label
-      ><canvas id="paciente_profissional"></canvas>
-    </div>
-    <div class="graph-background">
-      <label>Pacientes por faixa etária</label
-      ><canvas id="paciente_idade"></canvas>
+      <label>Balanço de entradas e saidas</label
+      ><canvas id="entrada_calculo"></canvas>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="dashboard/static/js/dashboard_paciente.js"></script>
+  <script src="dashboard/static/js/dashboard_financeiro.js"></script>
 
   {% endblock %}
 </div>
