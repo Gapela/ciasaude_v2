@@ -111,7 +111,7 @@ select {
 
 .kpi {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
 
@@ -138,4 +138,32 @@ select {
   font-weight: 600;
   color: #fff;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.graph-first-line {
+  margin-top: 50px;
+  display: grid;
+
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 5px;
+}
+
+.pizza-graph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 200px;
+  padding: 50px;
+}
+
+.bar-graph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 200px;
+  padding: 50px;
 }
