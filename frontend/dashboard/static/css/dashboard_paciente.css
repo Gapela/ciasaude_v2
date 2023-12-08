@@ -145,10 +145,10 @@ select {
   display: grid;
 
   grid-template-columns: 0.7fr 1.3fr;
-  gap: 5px;
+  gap: 20px;
 }
 
-.pizza-graph {
+.graph-background {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,14 +156,17 @@ select {
   border-radius: 10px;
   height: 200px;
   padding: 50px;
+  flex-direction: column;
 }
 
-.bar-graph {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 10px;
-  height: 200px;
-  padding: 50px;
+.graph-second-line {
+  margin-top: 50px;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+label {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }

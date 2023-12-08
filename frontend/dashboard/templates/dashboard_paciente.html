@@ -19,8 +19,24 @@
   </div>
 
   <div class="graph-first-line">
-    <div class="pizza-graph"><canvas id="pizza"></canvas></div>
-    <div class="bar-graph"><canvas id="bar"></canvas></div>
+    <div class="graph-background">
+      <label>Forma de Pagamento</label>
+      <canvas id="pizza"></canvas>
+    </div>
+    <div class="graph-background">
+      <label>Pacientes por diagnóstico</label><canvas id="bar"></canvas>
+    </div>
+  </div>
+
+  <div class="graph-second-line">
+    <div class="graph-background">
+      <label>Pacientes por profissional</label
+      ><canvas id="paciente_profissional"></canvas>
+    </div>
+    <div class="graph-background">
+      <label>Pacientes por faixa etária</label
+      ><canvas id="paciente_idade"></canvas>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

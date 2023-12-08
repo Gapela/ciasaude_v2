@@ -50,6 +50,33 @@ function bar_chart(
   });
 }
 
+function line_chart(
+  labels = [],
+  data = [],
+  backgroundColor = [],
+  borderColor = [],
+  borderWidth = 1,
+  element = "paciente_idade",
+  label_name = ""
+) {
+  var ctx = document.getElementById(element).getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: label_name,
+          data: data,
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+          borderWidth: borderWidth,
+        },
+      ],
+    },
+  });
+}
+
 function load_data() {
   labels = ["Particular", "Plano de Saúde"];
   data = [10, 20];
@@ -76,6 +103,30 @@ function load_data() {
     borderWidth,
     (element = "bar"),
     (label_name = "Quantidade de Pacientes")
+  );
+
+  labels = ["10", "20", "30", "40", "50", "60"];
+  data = [10, 20, 30, 40, 50, 60];
+  line_chart(
+    (labels = labels),
+    (data = data),
+    (backgroundColor = "#f6821f"),
+    borderColor,
+    borderWidth,
+    (element = "paciente_idade"),
+    (label_name = "Quantidade de Pacientes")
+  );
+
+  labels = ["10", "20", "30", "40", "50", "60"];
+  data = [10, 20, 30, 40, 50, 60];
+  bar_chart(
+    labels,
+    data,
+    "#f6821f",
+    borderColor,
+    borderWidth,
+    "paciente_profissional",
+    "Quantidade de Pacientes"
   );
 }
 
