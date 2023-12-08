@@ -36,7 +36,8 @@ function load_atendimento() {
     document.getElementById("observacao").value = data[0].observacao;
     document.getElementById("data_inicio").value = data[0].data_inicio;
     document.getElementById("data_fim").value = data[0].data_fim;
-
+    window.id_paciente = data[0].id_paciente;
+    window.id_profissional = data[0].id_profissional;
     console.log(data[0]);
   });
 }
@@ -56,14 +57,26 @@ function get_paciente_profissional() {
       console.log(data);
       if (data.status == "ok") {
         data.data.paciente.forEach((paciente) => {
-          document.querySelector("#id_paciente").innerHTML += `
-          <option value="${paciente.id_paciente}">${paciente.paciente}</option>
-          `;
+          if (window.id_paciente == paciente.id_paciente) {
+            document.querySelector("#id_paciente").innerHTML += `
+            <option selected value="${paciente.id_paciente}">${paciente.paciente}</option>
+            `;
+          } else {
+            document.querySelector("#id_paciente").innerHTML += `
+            <option value="${paciente.id_paciente}">${paciente.paciente}</option>
+            `;
+          }
         });
         data.data.profissional.forEach((profissional) => {
-          document.querySelector("#id_profissional").innerHTML += `
-          <option value="${profissional.id_profissional}">${profissional.profissional}</option>
-          `;
+          if (window.id_profissional == profissional.id_profissional) {
+            document.querySelector("#id_profissional").innerHTML += `
+            <option selected value="${profissional.id_profissional}">${profissional.profissional}</option>
+            `;
+          } else {
+            document.querySelector("#id_profissional").innerHTML += `
+            <option value="${profissional.id_profissional}">${profissional.profissional}</option>
+            `;
+          }
         });
       } else {
         console.log("Erro: " + data.data);

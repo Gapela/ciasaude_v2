@@ -12,17 +12,17 @@
           type="date"
           placeholder="Insira a descrição da despesa"
           autofocus="true"
-          id="tipo_despesa"
+          id="data_agenda"
         />
       </div>
 
       <div class="form-input">
-        <label for="usuario">Horario</label>
+        <label for="usuario">Horário</label>
         <input
           type="time"
           placeholder="Insira a descrição da despesa"
           autofocus="true"
-          id="descricao"
+          id="horario"
         />
       </div>
     </div>
@@ -30,12 +30,12 @@
     <div class="two-center">
       <div class="form-input">
         <label for="usuario">Profissional</label>
-        <select id="profissional"></select>
+        <select id="id_profissional"></select>
       </div>
 
       <div class="form-input">
         <label for="usuario">Paciente</label>
-        <select id="paciente"></select>
+        <select id="id_paciente"></select>
       </div>
     </div>
     <div class="one-line">
@@ -45,17 +45,17 @@
           type="text"
           placeholder="Descreva a observação"
           autofocus="true"
-          id="valor"
+          id="observacao"
         />
       </div>
     </div>
 
     <div class="actions">
-      <a class="button-table-action" onclick="get_content()">Avançar</a
+      <a class="button-table-action" onclick="get_agenda_edit()">Avançar</a
       ><a class="button-table-action" href="/agenda">Voltar</a>
     </div>
   </div>
 
-  <script src="agenda/static/js/agenda_novo.js"></script>
+  <script src="agenda/static/js/agenda_editar.js"></script>
   {% endblock %}
 </div>
