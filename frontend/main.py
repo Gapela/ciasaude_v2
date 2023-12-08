@@ -9,6 +9,7 @@ from navbar.navbar import navbar_bp
 from page.page import page_bp
 from despesas.despesas import despesas_bp
 from agenda.agenda import agenda_bp
+from dashboard.dashboard import dashboard_bp
 
 app = Flask(__name__)
 
@@ -22,6 +23,7 @@ app.register_blueprint(navbar_bp)
 app.register_blueprint(page_bp)
 app.register_blueprint(despesas_bp)
 app.register_blueprint(agenda_bp)
+app.register_blueprint(dashboard_bp)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True, port=8001)

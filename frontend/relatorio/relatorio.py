@@ -9,6 +9,4 @@ def relatorio():
     return render_template('relatorio.html')
 
 
-@relatorio_bp.route('/relatorio/<int:relatorio_id>')
-def relatorio_detail(relatorio_id):
-    return f'Página do relatorio {relatorio_id}'
+

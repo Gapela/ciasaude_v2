@@ -1,0 +1,29 @@
+{% extends "navbar.html" %} {% block content %}
+
+<link rel="stylesheet" href="dashboard/static/css/dashboard.css" />
+
+<div class="container-dashboard">
+  <div class="kpi">
+    <div class="kpi-item">
+      <div class="kpi-item-title">Total de usuarios</div>
+      <div class="kpi-item-value">{{ total_users }}</div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-item-title">Total de productos</div>
+      <div class="kpi-item-value">{{ total_products }}</div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-item-title">Total de ventas</div>
+      <div class="kpi-item-value">{{ total_sales }}</div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-item-title">Total de categorías</div>
+      <div class="kpi-item-value">{{ total_categories }}</div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-item-title">Total de categorías</div>
+      <div class="kpi-item-value">{{ total_categories }}</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
