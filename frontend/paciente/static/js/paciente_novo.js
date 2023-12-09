@@ -95,6 +95,36 @@ function calcularIdade(data_nascimento) {
   }
 }
 
+function pagamento(forma_pagamento) {
+
+  if (forma_pagamento == 'particular') {
+
+    document.getElementById('empresa').value = '';
+    document.getElementById('empresa').disabled = true;
+
+    document.getElementById('numero_carteirinha').value = '';
+    document.getElementById('numero_carteirinha').disabled = true;
+
+    document.getElementById('plano').value = '';  
+    document.getElementById('plano').disabled = true;
+
+  } else if (forma_pagamento == 'plano') {
+
+    document.getElementById('empresa').disabled = false;
+    document.getElementById('numero_carteirinha').disabled = false;
+    document.getElementById('plano').disabled = false;
+
+    document.getElementById('empresa').required = true;
+    document.getElementById('numero_carteirinha').required = true;
+    document.getElementById('plano').required = true;
+
+    document.getElementById('empresa').value = 0;
+  }
+  else {
+    console.log('erro - forma de pagamento não identificada');
+  }
+}
+
 
 document.getElementById('cep').addEventListener('input', function (event) {
   this.value = formatarCEP(this.value);
@@ -108,6 +138,10 @@ document.getElementById('cpf').addEventListener('input', function (event) {
   this.value = formatarCPF(this.value);
 });
 
+document.getElementById('cpf_responsavel').addEventListener('input', function (event) {
+  this.value = formatarCPF(this.value);
+});
+
 document.getElementById('telefone').addEventListener('input', function (event) {
   this.value = formatarTelefone(this.value);
 });
@@ -116,6 +150,6 @@ document.getElementById('data_nascimento').addEventListener('input', function (e
   this.value = formatarData(this.value);
 });
 
-document.getElementById('data_nascimento').addEventListener('input', function() {
-  calcularIdade(this.value);
+document.getElementById('pagamento').addEventListener('change', function (event) {
+  pagamento(this.value);
 });

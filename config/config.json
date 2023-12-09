@@ -3,7 +3,7 @@
     "prod": {
       "hostname": "localhost",
       "username": "postgres",
-      "password": "17571946735",
+      "password": "123456789",
       "database": "ciasaude",
       "port": "5432"
     },
@@ -11,7 +11,7 @@
     "hml": {
       "hostname": "localhost",
       "username": "postgres",
-      "password": "17571946735",
+      "password": "123456789",
       "database": "ciasaude",
       "port": "5432"
     }
