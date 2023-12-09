@@ -78,53 +78,81 @@ function line_chart(
 }
 
 function load_data() {
+  url = window.url_api + "dashboard";
+  body = { dashboard: "financeiro" };
+  token = sessionStorage.getItem("token");
+
+  window
+    .request_backend(url, body, token)
+    .then((data) => {
+      if (data.status == "ok") {
+        monta_data_table(data.data);
+        monta_kpi(data.data);
+      } else {
+        console.log("Erro: " + data.status);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function monta_data_table(data_chart) {
   backgroundColor = ["#a9cf3c", "#f6821f"];
   borderColor = [];
   borderWidth = 1;
-
-  diagnosticos = [
-    "Diabetes",
-    "Hipertensão",
-    "Obesidade",
-    "Ansiedade",
-    "TDAH",
-    "Outros",
-  ];
-  data = [10, 20, 30, 40, 50, 60];
+  labels_entrada_periodo = data_chart.entrada_periodo.labels;
+  data_entrada_periodo = data_chart.entrada_periodo.data;
   line_chart(
-    (labels = diagnosticos),
-    (data = data),
+    (labels = labels_entrada_periodo),
+    (data = data_entrada_periodo),
     (backgroundColor = "#f6821f"),
     borderColor,
     borderWidth,
     (element = "entrada_periodo"),
-    (label_name = "Quantidade de Pacientes")
+    (label_name = "Valor de Entrada")
   );
 
-  labels = ["10", "20", "30", "40", "50", "60"];
-  data = [10, 20, 30, 40, 50, 60];
+  labels_saida_periodo = data_chart.saida_periodo.labels;
+  data_saida_periodo = data_chart.saida_periodo.data;
   line_chart(
-    (labels = labels),
-    (data = data),
+    (labels = labels_saida_periodo),
+    (data = data_saida_periodo),
     (backgroundColor = "#f6821f"),
     borderColor,
     borderWidth,
     (element = "saida_periodo"),
-    (label_name = "Quantidade de Pacientes")
+    (label_name = "Saida por período")
   );
 
-  labels = ["10", "20", "30", "40", "50", "60"];
-  data = [10, 20, 30, 40, 50, 60];
+  labels_balanco_mes = data_chart.balanco_mes.labels;
+  data_balanco_mes = data_chart.balanco_mes.data;
   bar_chart(
-    labels,
-    data,
+    labels_balanco_mes,
+    data_balanco_mes,
     "#f6821f",
     borderColor,
     borderWidth,
     "entrada_calculo",
-    "Quantidade de Pacientes"
+    "Balanço de Entrada e Saida por Mês"
   );
 }
 
+function monta_kpi(data_chart) {
+  total_entrada = document.getElementById("kpi-entradas");
+  total_saida = document.getElementById("kpi-saidas");
+  total_calculo = document.getElementById("kpi-calculo");
+
+  // colocar o texto da div = ao valor do kpi
+  total_entrada.innerHTML = data_chart.entrada_soma.data;
+  total_saida.innerHTML = data_chart.saida_soma.data;
+  total_calculo.innerHTML =
+    parseFloat(data_chart.entrada_soma.data) -
+    parseFloat(data_chart.saida_soma.data);
+}
+
 window.pizzaChart = pizzaChart;
-load_data();
+
+window.onload = function () {
+  load_data();
+};
