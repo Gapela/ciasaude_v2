@@ -78,26 +78,48 @@ function line_chart(
 }
 
 function load_data() {
-  labels = ["Particular", "Plano de Saúde"];
-  data = [10, 20];
+  url = window.url_api + "dashboard";
+  body = { dashboard: "paciente" };
+  token = sessionStorage.getItem("token");
+
+  window
+    .request_backend(url, body, token)
+    .then((data) => {
+      if (data.status == "ok") {
+        monta_data_table(data.data);
+        monta_kpi(data.data);
+      } else {
+        console.log("Erro: " + data.status);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function monta_data_table(data_chart) {
   backgroundColor = ["#a9cf3c", "#f6821f"];
   borderColor = [];
   borderWidth = 1;
-  element = "pizza";
-  pizzaChart(labels, data, backgroundColor, borderColor, borderWidth, element);
 
-  diagnosticos = [
-    "Diabetes",
-    "Hipertensão",
-    "Obesidade",
-    "Ansiedade",
-    "TDAH",
-    "Outros",
-  ];
-  data = [10, 20, 30, 40, 50, 60];
+  data_forma_pagamento = data_chart.kpi.data.slice(-2);
+  labels_forma_pagamento = data_chart.kpi.labels.slice(-2);
+
+  pizzaChart(
+    (labels = labels_forma_pagamento),
+    (data = data_forma_pagamento),
+    (backgroundColor = backgroundColor),
+    (borderColor = borderColor),
+    (borderWidth = 1),
+    (element = "pizza")
+  );
+
+  labels_paciente_diagnostico = data_chart.paciente_diagnostico.labels;
+  data_paciente_diagnostico = data_chart.paciente_diagnostico.data;
+
   bar_chart(
-    (labels = diagnosticos),
-    (data = data),
+    (labels = labels_paciente_diagnostico),
+    (data = data_paciente_diagnostico),
     (backgroundColor = "#f6821f"),
     borderColor,
     borderWidth,
@@ -105,11 +127,12 @@ function load_data() {
     (label_name = "Quantidade de Pacientes")
   );
 
-  labels = ["10", "20", "30", "40", "50", "60"];
-  data = [10, 20, 30, 40, 50, 60];
+  labels_faixa_etaria = data_chart.faixa_etaria.labels;
+  dados_faixa_etaria = data_chart.faixa_etaria.data;
+
   line_chart(
-    (labels = labels),
-    (data = data),
+    (labels = labels_faixa_etaria),
+    (data = dados_faixa_etaria),
     (backgroundColor = "#f6821f"),
     borderColor,
     borderWidth,
@@ -117,11 +140,11 @@ function load_data() {
     (label_name = "Quantidade de Pacientes")
   );
 
-  labels = ["10", "20", "30", "40", "50", "60"];
-  data = [10, 20, 30, 40, 50, 60];
+  labels_paciente_profissional = data_chart.paciente_profissional.labels;
+  data_paciente_profissional = data_chart.paciente_profissional.data;
   bar_chart(
-    labels,
-    data,
+    labels_paciente_profissional,
+    data_paciente_profissional,
     "#f6821f",
     borderColor,
     borderWidth,
@@ -130,5 +153,17 @@ function load_data() {
   );
 }
 
-window.pizzaChart = pizzaChart;
-load_data();
+function monta_kpi(data_chart) {
+  total = document.getElementById("kpi-1");
+  total_ativos = document.getElementById("kpi-2");
+  total_inativos = document.getElementById("kpi-3");
+
+  // colocar o texto da div = ao valor do kpi
+  total.innerHTML = data_chart.kpi.data[0];
+  total_ativos.innerHTML = data_chart.paciente_ativos.data[0];
+  total_inativos.innerHTML = data_chart.paciente_ativos.data[1];
+}
+
+window.onload = function () {
+  load_data();
+};
