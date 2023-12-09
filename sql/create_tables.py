@@ -15,6 +15,7 @@ queries = [
         data_nascimento TEXT,
         responsavel TEXT,
         cpf_responsavel TEXT,
+        diagnostico TEXT,
         medico_solicitante TEXT,
         crm TEXT,
         ocupacao TEXT,
@@ -33,6 +34,7 @@ queries = [
         id_atendimento SERIAL PRIMARY KEY,
         especialidade TEXT,
         profissional_responsavel TEXT,
+        formato_atendimento text,
         observacao TEXT,
         data_inicio TEXT,
         data_fim TEXT,
@@ -78,6 +80,7 @@ queries = [
         CREATE TABLE despesas (
         id_despesas SERIAL PRIMARY KEY,
         data TEXT,
+        tipo text,
         tipo_despesa TEXT,
         descricao TEXT,
         valor TEXT,
