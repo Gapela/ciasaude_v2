@@ -151,8 +151,6 @@ function monta_kpi(data_chart) {
     parseFloat(data_chart.saida_soma.data);
 }
 
-window.pizzaChart = pizzaChart;
-
 window.onload = function () {
   load_data();
 };
