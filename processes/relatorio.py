@@ -47,14 +47,67 @@ def generate_report(query):
     return file_path
 
 def generate_query(js):
-    ...
+    filters = js['data']
+    query_filter = []
+    for filter in filters:
+        campo = adjust_field(filter[0])
+        operador = adjust_operator(filter[1])
+        valor = adjust_param(filter[2], operador)
+        query_filter.append(f'{campo} {operador} {valor}')
+    
+    query = f'select * from {js["module"]} where {" and ".join(query_filter)}'
+    return query
+
 
 def generate_full(module):
     query = f'select * from {module}'
     filepath = generate_report(query)
     return filepath    
 
-
+def adjust_operator(operator):
+    if operator == 'Igual a':
+        return '='
+    elif operator == 'Diferente de':
+        return '<>'
+    elif operator == 'Maior que':
+        return '>'
+    elif operator == 'Menor que':
+        return '<'
+    elif operator == 'Maior ou igual a':
+        return '>='
+    elif operator == 'Menor ou igual a':
+        return '<='
+    elif operator == 'Contém':
+        return 'like'
+    else:
+        return '='
+    
+def adjust_param(parametro, operator):
+    
+    if operator == 'like':
+        return f"'%{parametro}%'"
+    elif operator == '=':
+        if parametro.isnumeric():
+            return f'{parametro}'
+        else:
+            return f"'{parametro}'"
+    elif operator == '<>':
+        if parametro.isnumeric():
+            return f'{parametro}'
+        else:
+            return f"'{parametro}'"
+    
+    elif operator == '>' or operator == '>=' or operator == '<' or operator == '<=':
+        return f'{parametro}'
+               
+def adjust_field(field):
+    if field == 'Forma de Pagamento':
+        return 'lower(pagamento)'
+    elif field == 'Empresa':
+        return 'lower(empresa)'
+    elif field == 'Data de Nascimento':
+        return 'lower(data_nascimento)'    
+    
 
 def dashboard_data(js):
     dash = js['dashboard']
