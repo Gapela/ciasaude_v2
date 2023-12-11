@@ -1,4 +1,8 @@
 function get_paciente_edit() {
+  check_required = verifica_required();
+  if (check_required == false) {
+    return false;
+  }
   variavel = window.location.search;
   id_paciente = variavel.split("=")[1];
   const inputs = document.querySelectorAll("input");
@@ -60,6 +64,27 @@ function load_paciente() {
     window.file_path = file_path;
     console.log(data[0]);
   });
+}
+
+function verifica_required() {
+  nome = document.getElementById("nome").value;
+  data_nascimento = document.getElementById("data_nascimento").value;
+  telefone = document.getElementById("telefone").value;
+  cep = document.getElementById("cep").value;
+  endereco = document.getElementById("endereco").value;
+  medico_solicitante = document.getElementById("medico_solicitante").value;
+
+  if (
+    nome == "" ||
+    data_nascimento == "" ||
+    telefone == "" ||
+    cep == "" ||
+    endereco == "" ||
+    medico_solicitante == ""
+  ) {
+    alert("Preencha todos os campos obrigatórios (*)");
+    return false;
+  }
 }
 
 window.onload = function () {
