@@ -5,15 +5,20 @@
 <div class="container-despesas-novo">
   <div class="title">Módulo Financeiro - Cadastro</div>
   <div class="form-content">
-    <div class="nome-endereco">
+    <div class="two-center">
       <div class="form-input">
-        <label for="usuario">Tipo de Despesa</label>
-        <input
-          type="text"
-          placeholder="Insira a descrição da despesa"
-          autofocus="true"
-          id="tipo_despesa"
-        />
+        <label for="usuario">Tipo de Lançamento</label>
+        <select name="paciente" id="tipo" class="select">
+          <option value="Entrada">Entrada</option>
+          <option value="Saida">Saida</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <label for="usuario">Categoria</label>
+        <select name="paciente" id="tipo_despesa" class="select">
+          <option value="Entrada">Entrada</option>
+          <option value="Saida">Saida</option>
+        </select>
       </div>
 
       <div class="form-input">
@@ -39,7 +44,7 @@
 
     <div class="two-center">
       <div class="form-input">
-        <label for="usuario">Data da Despesa</label>
+        <label for="usuario">Data</label>
         <input
           type="text"
           placeholder="XX/XX/XXXX"

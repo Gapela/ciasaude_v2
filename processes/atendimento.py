@@ -73,7 +73,7 @@ def rotas_atendimento(app):
 
 def get_df_to_json(filter=None, data=''):
     if filter==None:   
-        query = """select atend.id_atendimento, pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
+        query = """select atend.id_atendimento, pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text, atend.formato_atendimento  from atendimento atend
         left join paciente pac
         on atend.id_paciente = pac.id_paciente
         left join profissional prof
@@ -91,7 +91,7 @@ def get_df_to_json(filter=None, data=''):
         return js
     else:
         id = data['id_atendimento']
-        query = f"""select atend.id_atendimento, pac.id_paciente, prof.id_profissional,  pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text  from atendimento atend
+        query = f"""select atend.id_atendimento, pac.id_paciente, prof.id_profissional,  pac.nome as paciente, prof.nome as profissional, prof.especialidade, atend.observacao, atend.data_inicio::text, atend.data_fim::text, atend.formato_atendimento  from atendimento atend
         left join paciente pac
         on atend.id_paciente = pac.id_paciente
         left join profissional prof

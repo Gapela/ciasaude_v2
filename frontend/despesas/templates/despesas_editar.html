@@ -5,15 +5,20 @@
 <div class="container-despesas-novo">
   <div class="title">Módulo Financeiro - Editar</div>
   <div class="form-content">
-    <div class="nome-endereco">
+    <div class="two-center">
       <div class="form-input">
-        <label for="usuario">Data da Despesa</label>
-        <input
-          type="text"
-          placeholder="Insira o nome completo"
-          autofocus="true"
-          id="data"
-        />
+        <label for="usuario">Tipo de Lançamento</label>
+        <select name="paciente" id="tipo" class="select">
+          <option value="Entrada">Entrada</option>
+          <option value="Saida">Saida</option>
+        </select>
+      </div>
+      <div class="form-input">
+        <label for="usuario">Categoria</label>
+        <select name="paciente" id="tipo_despesa" class="select">
+          <option value="Entrada">Entrada</option>
+          <option value="Saida">Saida</option>
+        </select>
       </div>
 
       <div class="form-input">
@@ -27,32 +32,34 @@
       </div>
 
       <div class="form-input">
-        <label for="usuario">Tipo de Despesa</label>
+        <label for="usuario">Nome do Responsável</label>
         <input
           type="text"
-          placeholder="Insira seu endereço completo"
+          placeholder="Insira o nome do responsável da despesa"
           autofocus="true"
-          id="tipo_despesa"
+          id="nome_responsavel"
         />
       </div>
     </div>
-    <div class="four-items">
+
+    <div class="two-center">
+      <div class="form-input">
+        <label for="usuario">Data</label>
+        <input
+          type="text"
+          placeholder="XX/XX/XXXX"
+          autofocus="true"
+          id="data"
+        />
+      </div>
+
       <div class="form-input">
         <label for="usuario">Valor</label>
         <input
           type="text"
-          placeholder="XXXXX-XXX"
+          placeholder="R$ XXX,XX"
           autofocus="true"
           id="valor"
-        />
-      </div>
-      <div class="form-input">
-        <label for="usuario">Nome do Responsável</label>
-        <input
-          type="text"
-          placeholder="XX.XXX.XXX-X"
-          autofocus="true"
-          id="nome_responsavel"
         />
       </div>
     </div>

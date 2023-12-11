@@ -36,6 +36,8 @@ function load_atendimento() {
     document.getElementById("observacao").value = data[0].observacao;
     document.getElementById("data_inicio").value = data[0].data_inicio;
     document.getElementById("data_fim").value = data[0].data_fim;
+    document.getElementById("formato_atendimento").value =
+      data[0].formato_atendimento;
     window.id_paciente = data[0].id_paciente;
     window.id_profissional = data[0].id_profissional;
     console.log(data[0]);

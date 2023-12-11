@@ -31,6 +31,7 @@ function monta_data_table(data) {
       valor: despesas.valor,
       nome_responsavel: despesas.nome_responsavel,
       id_despesas: despesas.id_despesas,
+      tipo: despesas.tipo,
     };
 
     // adiciona o novo objeto ao array dataSet
@@ -42,7 +43,8 @@ function monta_data_table(data) {
     data: dataSet,
     columns: [
       { title: "Data", data: "data" },
-      { title: "Tipo de Despesa", data: "tipo_despesa" },
+      { title: "Tipo de Lançamento", data: "tipo" },
+      { title: "Cetegoria", data: "tipo_despesa" },
       { title: "Descrição", data: "descricao" },
       { title: "Valor", data: "valor" },
       { title: "Nome do Responsável", data: "nome_responsavel" },
