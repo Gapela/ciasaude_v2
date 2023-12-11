@@ -137,10 +137,12 @@ function altera_campos_filter() {
       <option value="cpf">CPF</option>\
       <option value="telefone">Telefone</option>\
       <option value="email">Email</option>\
-      <option value="data_nascimento">Data de nascimento</option>\
       <option value="endereco">Endereço</option>\
       <option value="diagnostico">Diagnostico</option>\
-      <option value="plano">Plano</option>';
+      <option value="plano">Plano</option>\
+      <option value="plano">Ano de Nascimento</option>\
+      <option value="plano">Mês de Nascimento</option>\
+      <option value="plano">Dia de Nascimento</option>';
   } else if (changed_module == "profissional") {
     campo_filter.innerHTML =
       '<option value="nome">Nome</option>\

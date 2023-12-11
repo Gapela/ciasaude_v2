@@ -50,6 +50,7 @@ function load_paciente() {
     document.getElementById("numero_carteirinha").value =
       data[0].numero_carteirinha;
     document.getElementById("plano").value = data[0].plano;
+    document.getElementById("diagnostico").value = data[0].diagnostico;
     // cpf, cpf_responsavel, responsavel
     document.getElementById("cpf").value = data[0].cpf;
     document.getElementById("cpf_responsavel").value = data[0].cpf_responsavel;
