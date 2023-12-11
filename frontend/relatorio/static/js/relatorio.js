@@ -121,3 +121,45 @@ function download_report(module, lista_filtros) {
     document.body.removeChild(a);
   });
 }
+
+function altera_campos_filter() {
+  changed_module = document.getElementById("modulo").value;
+  campo_filter = document.getElementById("campo_filtro");
+  if (changed_module == "atendimento") {
+    campo_filter.innerHTML =
+      '<option value="id">ID</option>\
+      <option value="data_inicio">Data de início</option>\
+      <option value="data_fim">Data de fim</option>\
+      <option value="paciente">Paciente</option>\
+      <option value="profissional">Profissional</option>\
+      <option value="valor">Valor</option>\
+      <option value="status">Status</option>';
+  } else if (changed_module == "paciente") {
+    campo_filter.innerHTML =
+      '<option value="id">ID</option>\
+      <option value="nome">Nome</option>\
+      <option value="cpf">CPF</option>\
+      <option value="telefone">Telefone</option>\
+      <option value="email">E-mail</option>\
+      <option value="data_nascimento">Data de nascimento</option>\
+      <option value="endereco">Endereço</option>\
+      <option value="convenio">Convênio</option>';
+  } else if (changed_module == "profissional") {
+    campo_filter.innerHTML =
+      '<option value="id">ID</option>\
+      <option value="nome">Nome</option>\
+      <option value="cpf">CPF</option>\
+      <option value="telefone">Telefone</option>\
+      <option value="email">E-mail</option>\
+      <option value="data_nascimento">Data de nascimento</option>\
+      <option value="endereco">Endereço</option>\
+      <option value="especialidade">Especialidade</option>';
+  } else if (changed_module == "despesas") {
+    campo_filter.innerHTML =
+      '<option value="id">ID</option>\
+      <option value="data">Data</option>\
+      <option value="descricao">Descrição</option>\
+      <option value="valor">Valor</option>\
+      <option value="tipo">Tipo</option>';
+  }
+}
