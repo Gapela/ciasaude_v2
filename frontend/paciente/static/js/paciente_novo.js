@@ -1,5 +1,11 @@
 // função chamada quando clica-se no botão de Avançar
 function get_content() {
+  // verifica se todos os campos obrigatórios foram preenchidos
+  check_required = verifica_required();
+  if (check_required == false) {
+    return false;
+  }
+
   const inputs = document.querySelectorAll("input");
   form = window.get_all_input_content_formdata(inputs, "paciente");
 
@@ -17,6 +23,27 @@ function get_content() {
 
   console.log(form);
   return form;
+}
+
+function verifica_required() {
+  nome = document.getElementById("nome").value;
+  data_nascimento = document.getElementById("data_nascimento").value;
+  telefone = document.getElementById("telefone").value;
+  cep = document.getElementById("cep").value;
+  endereco = document.getElementById("endereco").value;
+  medico_solicitante = document.getElementById("medico_solicitante").value;
+
+  if (
+    nome == "" ||
+    data_nascimento == "" ||
+    telefone == "" ||
+    cep == "" ||
+    endereco == "" ||
+    medico_solicitante == ""
+  ) {
+    alert("Preencha todos os campos obrigatórios (*)");
+    return false;
+  }
 }
 
 // funções de formato de campo cep
