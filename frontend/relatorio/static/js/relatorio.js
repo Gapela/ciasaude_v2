@@ -150,7 +150,6 @@ function altera_campos_filter() {
       <option value="telefone">Telefone</option>\
       <option value="status">Especialidade</option>\
       <option value="data_nascimento">Data de nascimento</option>\
-      <option value="endereco">Endereço</option>\
       <option value="especialidade">Especialidade</option>';
   } else if (changed_module == "despesas") {
     campo_filter.innerHTML =

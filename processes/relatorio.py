@@ -24,7 +24,7 @@ def rotas_relatorio(app):
         else:
             query = generate_query(js)
             file = generate_report(query)
-            
+            print(query)
             with open(file, "rb") as pdf_file:
                 encoded_string = base64.b64encode(pdf_file.read()).decode('utf-8')
                 return {'status':'ok', 'data':f'{encoded_string}', 'extensao':f'{file.split(".")[-1]}'}
@@ -83,7 +83,11 @@ def adjust_operator(operator):
         return '='
     
 def adjust_param(parametro, operator):
-    
+    if parametro.isnumeric():
+        pass
+    else:
+        parametro = parametro.lower()
+        
     if operator == 'like':
         return f"'%{parametro}%'"
     elif operator == '=':
@@ -106,7 +110,45 @@ def adjust_field(field):
     elif field == 'Empresa':
         return 'lower(empresa)'
     elif field == 'Data de Nascimento':
-        return 'lower(data_nascimento)'    
+        return 'lower(data_nascimento)'
+    # Faça a mesma coisa com os campos Data inicio, Data fim, Formato de Atendimento, Especialidade, Diagnostico, Nome ,CPF, Telefone, Email, Plano, Ano de Nascimento, Mês de Nascimento, Dia de Nascimento
+    elif field == 'Data inicio':
+        return 'lower(data_inicio)'
+    elif field == 'Data fim':
+        return 'lower(data_fim)'
+    elif field == 'Formato de Atendimento':
+        return 'lower(formato_atendimento)'
+    elif field == 'Especialidade':
+        return 'lower(especialidade)'
+    elif field == 'Diagnostico':
+        return 'lower(diagnostico)'
+    elif field == 'Nome':
+        return 'lower(nome)'
+    elif field == 'CPF':
+        return 'lower(cpf)'
+    elif field == 'Telefone':
+        return 'lower(telefone)'
+    elif field == 'Email':
+        return 'lower(email)'
+    elif field == 'Plano':
+        return 'lower(plano)'
+    elif field == 'Ano de Nascimento':
+        return "EXTRACT(YEAR FROM AGE(CURRENT_DATE, TO_DATE(data_nascimento, 'DD/MM/YYYY')))"
+    elif field == 'Mês de Nascimento':
+        return "EXTRACT(MONTH FROM AGE(CURRENT_DATE, TO_DATE(data_nascimento, 'DD/MM/YYYY')))"
+    elif field == 'Dia de Nascimento':
+        return "EXTRACT(DAY FROM AGE(CURRENT_DATE, TO_DATE(data_nascimento, 'DD/MM/YYYY')))"
+    elif field == 'Data':
+        return 'lower(data)'
+    elif field == 'Valor':
+        return 'lower(valor)'
+    elif field == 'Tipo de transação':
+        return 'lower(tipo)'
+    elif field == 'Nome do responsável':
+        return 'lower(nome_responsavel)'
+    elif field == 'Endereço':
+        return 'lower(endereco)'
+     
     
 
 def dashboard_data(js):
