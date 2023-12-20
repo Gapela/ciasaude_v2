@@ -33,6 +33,13 @@ function verifica_required() {
   endereco = document.getElementById("endereco").value;
   medico_solicitante = document.getElementById("medico_solicitante").value;
 
+  responsavel = document.getElementById("responsavel").value;
+  cpf_responsavel = document.getElementById("cpf_responsavel").value;
+
+  // maioridade
+  idade_dias = calcularDiferenca(data_nascimento, data_agora_ddmmaaaa());
+  status_maioridade = maioridade(idade_dias);
+
   if (
     nome == "" ||
     data_nascimento == "" ||
@@ -56,10 +63,6 @@ function formatarCEP(cep) {
   return cepFormatado;
 }
 
-document.getElementById("cep").addEventListener("input", function (event) {
-  this.value = formatarCEP(this.value);
-});
-
 // função de formato de campo rg
 function formatarRG(rg) {
   var rgFormatado = rg.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
@@ -75,10 +78,6 @@ function formatarRG(rg) {
   return rgFormatado;
 }
 
-document.getElementById("rg").addEventListener("input", function (event) {
-  this.value = formatarRG(this.value);
-});
-
 // função de formato de campo cpf
 function formatarCPF(cpf) {
   var cpfFormatado = cpf.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
@@ -93,16 +92,6 @@ function formatarCPF(cpf) {
   }
   return cpfFormatado;
 }
-
-document.getElementById("cpf").addEventListener("input", function (event) {
-  this.value = formatarCPF(this.value);
-});
-
-document
-  .getElementById("cpf_responsavel")
-  .addEventListener("input", function (event) {
-    this.value = formatarCPF(this.value);
-  });
 
 // função de formato de campo telefone
 function formatarTelefone(telefone) {
@@ -126,44 +115,44 @@ function formatarTelefone(telefone) {
   return telefoneFormatado;
 }
 
-document.getElementById("telefone").addEventListener("input", function (event) {
-  this.value = formatarTelefone(this.value);
-});
-
 // função para controlar a necessidade de preenchimento de campos de plano de saúde
 function pagamento(forma_pagamento) {
   if (forma_pagamento == "particular") {
     document.getElementById("empresa").value = "";
     document.getElementById("empresa").disabled = true;
+    document.getElementById("empresa").style.display = "none";
 
     document.getElementById("numero_carteirinha").value = "";
     document.getElementById("numero_carteirinha").disabled = true;
+    document.getElementById("numero_carteirinha").style.display = "none";
 
     document.getElementById("plano").value = "";
     document.getElementById("plano").disabled = true;
+    document.getElementById("plano").style.display = "none";
+    
   } else if (forma_pagamento == "plano") {
-    document.getElementById("empresa").disabled = false;
-    document.getElementById("numero_carteirinha").disabled = false;
-    document.getElementById("plano").disabled = false;
-
-    document.getElementById("empresa").required = true;
-    document.getElementById("numero_carteirinha").required = true;
-    document.getElementById("plano").required = true;
 
     document.getElementById("empresa").value = 0;
+    document.getElementById("empresa").disabled = false;
+    document.getElementById("empresa").required = true;
+    document.getElementById("empresa").style.display = "block";
+
+    document.getElementById("numero_carteirinha").disabled = false;
+    document.getElementById("numero_carteirinha").required = true;
+    document.getElementById("numero_carteirinha").style.display = "block";
+
+    document.getElementById("plano").disabled = false;
+    document.getElementById("plano").required = true;
+    document.getElementById("plano").style.display = "block";
+
+
+
   } else {
     console.log("erro - forma de pagamento não identificada");
   }
 }
 
-document
-  .getElementById("pagamento")
-  .addEventListener("change", function (event) {
-    pagamento(this.value);
-  });
-
-// Data Nascimento
-// fica escutando o campo data de nascimento e formata a data inserida em dd/mm/aaaa durante insert
+// DATA NASCIMENTO
 function formatarDataNascimento(data) {
   var dataFormatada = data.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
   dataFormatada = dataFormatada.replace(/^(\d{2})(\d)/, "$1/$2"); // Insere uma barra após o segundo dígito
@@ -174,13 +163,8 @@ function formatarDataNascimento(data) {
 
   return dataFormatada;
 }
-document
-  .getElementById("data_nascimento")
-  .addEventListener("input", function (event) {
-    this.value = formatarDataNascimento(this.value);
-  });
 
-// DATA NASCIMENTO
+// DATA ATUAL
 function data_agora_ddmmaaaa() {
   var data = new Date();
   var dia = data.getDate();
@@ -190,6 +174,7 @@ function data_agora_ddmmaaaa() {
   return data_formatada;
 }
 
+// VERIFICA DATA
 function verificaData(data_nasc, datahoje) {
   // Converte as datas de string para objeto Date
   var partes1 = data_nasc.split("/");
@@ -212,6 +197,7 @@ function verificaData(data_nasc, datahoje) {
   }
 }
 
+// CALCULA DIFERENÇA ENTRE DATAS
 function calcularDiferenca(data_nasc, data_agora) {
   // Converte as datas de string para objeto Date
   var partes1 = data_nasc.split("/");
@@ -229,6 +215,7 @@ function calcularDiferenca(data_nasc, data_agora) {
   return diferencaEmDias;
 }
 
+// MAIORIDADE
 function maioridade(idade) {
   // arredonde a idade para para inteiro
   idade = Math.floor(idade);
@@ -245,6 +232,8 @@ function maioridade(idade) {
 }
 
 // listener
+
+//  listener para verificar se a data de nascimento é maior do que a data atual, se é menor de idade e se é maior de idade
 document
   .getElementById("data_nascimento")
   .addEventListener("change", function (event) {
@@ -256,13 +245,59 @@ document
     if (check_data == false) {
       alert("Data de nascimento maior do que a data atual");
       document.getElementById("data_nascimento").value = "";
-    } else {
-      idade = calcularDiferenca(data_nasc, data_agora);
-      status_maioridade = maioridade(idade);
-      if (status_maioridade == false) {
-        document.getElementById("responsavel").style.display = "block";
-      } else {
-        document.getElementById("responsavel").style.display = "none";
-      }
     }
+    // else {
+      // idade = calcularDiferenca(data_nasc, data_agora);
+      // status_maioridade = maioridade(idade);
+      // if (status_maioridade == false) {
+      //   document.getElementById("responsavel").style.display = "block";
+      // } else {
+      //   document.getElementById("responsavel").style.display = "none";
+      // }
+    // }
   });
+
+// Listener para formatar o campo de cep
+document
+  .getElementById("cep")
+  .addEventListener("input", function (event) {
+    this.value = formatarCEP(this.value);
+  });
+
+// Listener para formatar o campo de data de nascimento
+document
+  .getElementById("data_nascimento")
+  .addEventListener("input", function (event) {
+    this.value = formatarDataNascimento(this.value);
+  });
+
+// Listener para formatar o campo de pagamento
+document
+  .getElementById("pagamento")
+  .addEventListener("change", function (event) {
+    pagamento(this.value);
+
+  });
+
+// Listener para formatar o campo de telefone
+document.getElementById("telefone")
+  .addEventListener("input", function (event) {
+    this.value = formatarTelefone(this.value);
+  });
+
+// Listener para formatar o campo de cpf
+document.getElementById("cpf").addEventListener("input", function (event) {
+  this.value = formatarCPF(this.value);
+});
+
+// Listener para formatar o campo de cpf do responsável
+document
+  .getElementById("cpf_responsavel")
+  .addEventListener("input", function (event) {
+    this.value = formatarCPF(this.value);
+  });
+
+// Listener para formatar o campo de rg
+document.getElementById("rg").addEventListener("input", function (event) {
+  this.value = formatarRG(this.value);
+});
