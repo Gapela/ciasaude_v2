@@ -159,7 +159,10 @@ function monta_kpi(data_chart) {
   total_inativos = document.getElementById("kpi-3");
 
   // colocar o texto da div = ao valor do kpi
-  total.innerHTML = data_chart.kpi.data[0];
+  //descobrir o indice que contem o texto 'total_paciente' dentro de data.labels
+  tamanho = data_chart.kpi.labels.length;
+
+  total.innerHTML = data_chart.kpi.data[tamanho - 1];
   total_ativos.innerHTML = data_chart.paciente_ativos.data[0];
   total_inativos.innerHTML = data_chart.paciente_ativos.data[1];
 }
