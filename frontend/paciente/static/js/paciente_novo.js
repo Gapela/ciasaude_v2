@@ -32,9 +32,13 @@ function verifica_required() {
   cep = document.getElementById("cep").value;
   endereco = document.getElementById("endereco").value;
   medico_solicitante = document.getElementById("medico_solicitante").value;
-
   responsavel = document.getElementById("responsavel").value;
   cpf_responsavel = document.getElementById("cpf_responsavel").value;
+  forma_pagamento = document.getElementById("pagamento").value;
+  empresa = document.getElementById("empresa").value;
+  numero_carteirinha = document.getElementById("numero_carteirinha").value;
+  plano = document.getElementById("plano").value;
+  
 
   // maioridade
   idade_dias = calcularDiferenca(data_nascimento, data_agora_ddmmaaaa());
@@ -47,9 +51,50 @@ function verifica_required() {
     cep == "" ||
     endereco == "" ||
     medico_solicitante == ""
-  ) {
+    )
+  // se os campos acima estiverem vazios, o formulário não será enviado
+  {
     alert("Preencha todos os campos obrigatórios (*)");
     return false;
+  }
+
+  // se o paciente for menor de idade, os campos abaixo também são obrigatórios
+  else if (status_maioridade == false && responsavel == "") {
+    alert("Preencha o nome do responsável");
+    return false;
+  }
+  else if (status_maioridade == false && cpf_responsavel == "") {
+    alert("Preencha o CPF do responsável");
+    if (cpf_responsavel.length < 14) {
+      alert("CPF do responsável inválido");
+      return false;
+    }
+    return false;
+  }
+
+  // se a forma de pagamento for plano de saúde, os campos abaixo também são obrigatórios
+  else if(forma_pagamento == "plano" && empresa == 0) {
+    alert("Selecione uma empresa");
+    return false;
+  }
+  else if(forma_pagamento == "plano" && numero_carteirinha == "") {
+    alert("Preencha o número da carteirinha");
+    return false;
+  }
+  else if(forma_pagamento == "plano" && plano == "") {
+    alert("Preencha um plano");
+    return false;
+  }
+
+  // se o cep for inválido, o formulário não será enviado
+  else if (cep.length < 9) {
+    alert("CEP inválido");
+    return false;
+  }
+
+  // se tudo estiver ok, o formulário será enviado
+  else {
+    return true;
   }
 }
 
@@ -222,9 +267,6 @@ function maioridade(idade) {
   idade = idade / 365;
 
   if (idade < 18) {
-    alert(
-      "O paciente é menor de idade, é necessário informação do responsável."
-    );
     return false;
   } else {
     return true;

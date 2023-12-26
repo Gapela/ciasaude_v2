@@ -9,22 +9,12 @@
     <div class="nome-endereco">
       <div class="form-input">
         <label for="usuario">Nome *</label>
-        <input
-          type="text"
-          placeholder="Insira o nome completo"
-          autofocus="true"
-          id="nome"
-        />
+        <input type="text" placeholder="Insira o nome completo" autofocus="true" id="nome" />
       </div>
 
       <div class="form-input">
         <label for="usuario">Endereço *</label>
-        <input
-          type="text"
-          placeholder="Insira seu endereço completo"
-          autofocus="true"
-          id="endereco"
-        />
+        <input type="text" placeholder="Insira seu endereço completo" autofocus="true" id="endereco" />
       </div>
     </div>
     <div class="four-items">
@@ -34,97 +24,55 @@
       </div>
       <div class="form-input">
         <label for="usuario">RG</label>
-        <input
-          type="text"
-          placeholder="XX.XXX.XXX-X"
-          autofocus="true"
-          id="rg"
-        />
+        <input type="text" placeholder="XX.XXX.XXX-X" autofocus="true" id="rg" />
       </div>
       <div class="form-input">
         <label for="usuario">CPF</label>
-        <input
-          type="text"
-          placeholder="XXX.XXX.XXX-XX"
-          autofocus="true"
-          id="cpf"
-        />
+        <input type="text" placeholder="XXX.XXX.XXX-XX" autofocus="true" id="cpf" />
       </div>
       <div class="form-input">
         <label for="usuario">Telefone *</label>
-        <input
-          type="text"
-          placeholder="(DDD) XXXXX-XXXX"
-          autofocus="true"
-          id="telefone"
-        />
+        <input type="text" placeholder="(DDD) XXXXX-XXXX" autofocus="true" id="telefone" />
       </div>
     </div>
     <div class="two-right">
       <div class="form-input">
         <label for="usuario">Email</label>
-        <input
-          type="email"
-          placeholder="email@email.com"
-          autofocus="true"
-          id="email"
-        />
+        <input type="email" placeholder="email@email.com" autofocus="true" id="email" />
       </div>
 
       <div class="form-input">
         <label for="usuario">Data de Nascimento *</label>
-        <input
-          type="text"
-          placeholder="XX/XX/XXXX"
-          autofocus="true"
-          id="data_nascimento"
-        />
+        <input type="text" placeholder="XX/XX/XXXX" autofocus="true" id="data_nascimento" />
       </div>
     </div>
 
     <div class="three-items">
       <div class="form-input">
         <label for="usuario">Responsável</label>
-        <input
-          type="text"
-          placeholder="Insira o nome do Responsável"
-          autofocus="true"
-          id="responsavel"
-        />
+        <input type="text" placeholder="Insira o nome do Responsável" autofocus="true" id="responsavel" />
       </div>
       <div class="form-input">
         <label for="usuario">CPF do Responsável</label>
-        <input
-          type="text"
-          placeholder="Insira o CPF do Responsável"
-          autofocus="true"
-          id="cpf_responsavel"
-        />
+        <input type="text" placeholder="Insira o CPF do Responsável" autofocus="true" id="cpf_responsavel" />
       </div>
       <div class="form-input">
         <label for="usuario">Diagnóstico</label>
         <select name="diagnostico" id="diagnostico" class="select">
+          <option value="0">Sem diagnóstico</option>
           <option value="transtorno_ansiedade">Transtorno de Ansiedade</option>
           <option value="depressao">Depressão</option>
           <option value="autismo_tea">Autismo ou TEA</option>
           <option value="tdah">TDAH</option>
           <option value="tod">TOD</option>
           <option value="atraso_linguagem">Atraso Linguagem</option>
-          <option value="dificuldade_aprendizagem">
-            Dificuldade de Aprendizagem
-          </option>
-          <option value="transtorno_fonetico_fonologico">
-            Transtorno fonético e fonológico
-          </option>
+          <option value="dificuldade_aprendizagem">Dificuldade de Aprendizagem</option>
+          <option value="transtorno_fonetico_fonologico">Transtorno fonético e fonológico</option>
           <option value="tpac">TPAC</option>
-          <option value="deficiencia_intelectual">
-            Deficiência Intelectual
-          </option>
+          <option value="deficiencia_intelectual">Deficiência Intelectual</option>
           <option value="sindrome_down">Síndrome de Down</option>
           <option value="transtorno_alimentar">Transtorno Alimentar</option>
-          <option value="fisioterapia_ortopedica_neurologica">
-            Fisioterapia ortopédica/neurológica
-          </option>
+          <option value="fisioterapia_ortopedica_neurologica">Fisioterapia ortopédica/neurológica</option>
           <option value="avaliacoes_exames">Avaliações e exames</option>
           <option value="outros">Outros</option>
         </select>
@@ -134,51 +82,28 @@
     <div class="three-items">
       <div class="form-input">
         <label for="usuario">Médico Solicitante *</label>
-        <input
-          type="text"
-          placeholder="Insira o nome do Médico Solicitante"
-          autofocus="true"
-          id="medico_solicitante"
-        />
+        <input type="text" placeholder="Insira o nome do Médico Solicitante" autofocus="true" id="medico_solicitante" />
       </div>
       <div class="form-input">
-        <label for="usuario">CRM</label>
-        <input
-          type="text"
-          placeholder="Insira o CRM do Médico Solicitante"
-          autofocus="true"
-          id="crm"
-        />
+        <label for="usuario">CRM *</label>
+        <input type="text" placeholder="Insira o CRM do Médico Solicitante" autofocus="true" id="crm" />
       </div>
       <div class="form-input">
-        <label for="usuario">Ocupação</label>
-        <input
-          type="text"
-          placeholder="Insira a Ocupação do Médico Solicitante"
-          autofocus="true"
-          id="ocupacao"
-        />
+        <label for="usuario">Ocupação *</label>
+        <input type="text" placeholder="Insira a Ocupação do Médico Solicitante" autofocus="true" id="ocupacao" />
       </div>
     </div>
     <div class="two-vertical">
       <div class="form-input">
         <label for="usuario">CID</label>
-        <textarea
-          type="text-area"
-          placeholder="Insira a CID do Médico Solicitante"
-          autofocus="true"
-          id="cid"
-        ></textarea>
+        <textarea type="text-area" placeholder="Insira a CID do Médico Solicitante" autofocus="true"
+          id="cid"></textarea>
       </div>
 
       <div class="form-input">
         <label for="usuario">Observação</label>
-        <textarea
-          type="text-area"
-          placeholder="Insira a CID do Médico Solicitante"
-          autofocus="true"
-          id="observacao"
-        ></textarea>
+        <textarea type="text-area" placeholder="Insira a CID do Médico Solicitante" autofocus="true"
+          id="observacao"></textarea>
       </div>
     </div>
     <div class="four-items">
@@ -205,21 +130,12 @@
       </div>
       <div class="form-input">
         <label for="usuario">Nº Carteirinha</label>
-        <input
-          type="text"
-          placeholder="Insira o nº da carteirinha do paciente"
-          autofocus="true"
-          id="numero_carteirinha"
-        />
+        <input type="text" placeholder="Insira o nº da carteirinha do paciente" autofocus="true"
+          id="numero_carteirinha" />
       </div>
       <div class="form-input">
         <label for="usuario">Plano</label>
-        <input
-          type="text"
-          placeholder="Insira o plano de saúde do paciente"
-          autofocus="true"
-          id="plano"
-        />
+        <input type="text" placeholder="Insira o plano de saúde do paciente" autofocus="true" id="plano" />
       </div>
     </div>
   </div>
@@ -229,8 +145,8 @@
   </div>
 
   <div class="actions">
-    <a class="button-table-action" onclick="get_content()">Salvar</a
-    ><a class="button-table-action" href="/paciente">Voltar</a>
+    <a class="button-table-action" onclick="get_content()">Salvar</a><a class="button-table-action"
+      href="/paciente">Voltar</a>
   </div>
 </div>
 
