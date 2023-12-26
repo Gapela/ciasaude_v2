@@ -183,9 +183,11 @@ def dashboard_data(js):
                     FROM 
                     paciente 
                     WHERE 
-                    data_exclusao IS NULL 
+                    data_exclusao IS NULL
+                    
                     GROUP BY 
-                    info'''
+                    info
+                    ORDER BY info'''
     elif dash == 'profissional':
         query = f'''select 'total_plano' as info, 'profissional_plano' as indicador, count(*) as qtd from profissional where data_exclusao is null and plano <> 'sem_plano'
         union all
