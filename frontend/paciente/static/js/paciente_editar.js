@@ -73,7 +73,9 @@ function verifica_required() {
   cep = document.getElementById("cep").value;
   endereco = document.getElementById("endereco").value;
   medico_solicitante = document.getElementById("medico_solicitante").value;
+  
 
+  // verificar se os campos obrigatórios estão preenchidos
   if (
     nome == "" ||
     data_nascimento == "" ||
@@ -84,6 +86,11 @@ function verifica_required() {
   ) {
     alert("Preencha todos os campos obrigatórios (*)");
     return false;
+  }
+
+  // se tudo estiver ok, retorna true
+  else{
+    return true;
   }
 }
 
