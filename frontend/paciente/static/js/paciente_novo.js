@@ -46,10 +46,10 @@ function verifica_required() {
 
   if (
     nome == "" ||
-    data_nascimento == "" ||
-    telefone == "" ||
-    cep == "" ||
     endereco == "" ||
+    cep == "" ||
+    telefone == "" ||
+    data_nascimento == "" ||
     medico_solicitante == ""
     )
   // se os campos acima estiverem vazios, o formulário não será enviado
