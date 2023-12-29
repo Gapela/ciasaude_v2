@@ -1,3 +1,4 @@
+// VALIDADORES DE FORMULARIO
 function get_content() {
 
   //verifica se os campos obrigatorios estão preenchidos
@@ -23,49 +24,40 @@ function get_content() {
   console.log(res);
 }
 
-function verifica_required(){
+function verifica_required() {
   nome = document.getElementById("nome").value;
   endereco = document.getElementById("endereco").value;
   telefone = document.getElementById("telefone").value;
   especialidade = document.getElementById("especialidade").value;
-  crm = document.getElementById("crm").value;
 
 
   // verifica se os campos não estão vazios
   if (
-    nome == "" || 
-    endereco == "" || 
-    telefone == "" || 
-    crm == "") 
-    {
+    nome == "" ||
+    endereco == "" ||
+    telefone == "" ||
+    especialidade == "sem_especialidade") {
     alert("Por favor, preencha todos os campos obrigatórios (*)");
     return false;
   }
 
-  else if (especialidade == "sem_especialidade"){
-    alert("Por favor, selecione uma especialidade");
-    return false;
-  }
-
-  else if(telefone.length < 10){
+  // verifica se o campo telefone está preenchido corretamente
+  else if (telefone.length < 10) {
     alert("Por favor, preencha o campo telefone corretamente");
     return false;
   }
+
   
-  else{
+
+
+
+  else {
     return true;
   }
 }
 
 
-
-
-
-
-
 // FORMATAÇÃO DE FORMULARIO
-
-// RG e Listener
 function formatarRG(rg) {
   var rgFormatado = rg.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
   rgFormatado = rgFormatado.replace(/^(\d{2})(\d)/, "$1.$2"); // Insere um ponto após o segundo dígito
@@ -80,12 +72,6 @@ function formatarRG(rg) {
   return rgFormatado;
 }
 
-document.getElementById("rg").addEventListener("input", function (event) {
-  this.value = formatarRG(this.value);
-});
-
-
-// CPF
 function formatarCPF(cpf) {
   var cpfFormatado = cpf.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
   cpfFormatado = cpfFormatado.replace(/^(\d{3})(\d)/, "$1.$2"); // Insere um ponto após o terceiro dígito
@@ -100,11 +86,6 @@ function formatarCPF(cpf) {
   return cpfFormatado;
 }
 
-document.getElementById("cpf").addEventListener("input", function (event) {
-  this.value = formatarCPF(this.value);
-});
-
-// TELEFONE
 function formatarTelefone(telefone) {
   var telefoneFormatado = telefone.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
   telefoneFormatado = telefoneFormatado.replace(/^(\d{2})(\d)/, "($1) $2"); // Insere parênteses em torno dos dois primeiros dígitos
@@ -126,9 +107,15 @@ function formatarTelefone(telefone) {
   return telefoneFormatado;
 }
 
-document
-  .getElementById("telefone")
-  .addEventListener("input", function (event) {
-    this.value = formatarTelefone(this.value);
-  });
+// LISTENERS
+document.getElementById("cpf").addEventListener("input", function (event) {
+  this.value = formatarCPF(this.value);
+});
 
+document.getElementById("rg").addEventListener("input", function (event) {
+  this.value = formatarRG(this.value);
+});
+
+document.getElementById("telefone").addEventListener("input", function (event) {
+  this.value = formatarTelefone(this.value);
+});
