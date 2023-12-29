@@ -8,3 +8,7 @@ page_bp = Blueprint("page", __name__, template_folder="templates",
 @page_bp.route("/home")
 def homepage():
     return render_template("homepage.html")
+
+@page_bp.route("/")
+def index():
+    return redirect("/home")
